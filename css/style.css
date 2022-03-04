@@ -578,6 +578,12 @@
         width: 60px;
          border-radius: 100%;
     }
+    .hb-circle-4{
+        width: 40px;
+    }
+    .hb-circle-5{
+        width: 30px !important;
+    }
     .hero-input{
         margin-top: 20px;
     }
