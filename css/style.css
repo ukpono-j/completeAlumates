@@ -2406,7 +2406,7 @@ border-radius: 20px;
          color: white;
     }
     .not-reg-enter  input{
-      width: 100%;
+      width: 100% !important;
     }
 }
 
