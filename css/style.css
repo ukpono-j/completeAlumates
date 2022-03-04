@@ -2683,7 +2683,7 @@ border-radius: 40px;
     .signUp-form{
         height: auto;
         width: 100%;
-        border: 1px solid #000;
+        /* border: 1px solid #000; */
         padding: 50px 10px;
     }
     .signUp-form-container{
