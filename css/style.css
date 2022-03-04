@@ -2369,6 +2369,7 @@ color: white;
 }
 .not-reg-enter  input{
     height: 40px;
+    
     outline: none;
     border: none;
     margin-left: 10px;
@@ -2403,6 +2404,9 @@ border-radius: 20px;
          font-size: 23px;
          line-height: 27px;
          color: white;
+    }
+    .not-reg-enter  input{
+      width: 100%;
     }
 }
 
