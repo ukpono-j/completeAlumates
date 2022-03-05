@@ -680,6 +680,7 @@ padding: 0px 20px;
     }
     .download p{
           font-size: 16px;
+          line-height: 25px;
       }
       .download-btn-12, .download-btn-13 p{
         font-size: 13px;
