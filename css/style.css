@@ -2513,7 +2513,7 @@ border-radius: 20px;
     height: auto;
     width: 100%;
     display: flex;
-    justify-content: end;
+    justify-content: end !important;
     padding-top: 10px;
     padding-bottom: 20px;
 }
@@ -2588,7 +2588,7 @@ width: 100%;
 
 .recent-next{
     height: auto;
-    justify-content: end;
+    justify-content: end !important;
     display: flex;
     align-items: center;
     width: 100%;
