@@ -695,6 +695,8 @@ padding: 0px 20px;
     .download-btn-12{
        width: 100%;
        justify-content: start;
+      padding: 0px 10px;
+
     }
 
     .download-btn-13{
@@ -702,6 +704,8 @@ padding: 0px 20px;
         height: 70px;
         margin: 0px 3px;
         width: 100%;
+        padding: 0px 10px;
+
     }
   }
 
