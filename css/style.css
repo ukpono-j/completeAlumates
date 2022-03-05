@@ -2479,6 +2479,9 @@ border-radius: 20px;
     position: sticky;
     background-color: rgba(78, 90, 98, 1);
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .edit-profile-2{
     width: 100%;
@@ -2497,7 +2500,6 @@ border-radius: 20px;
 .edit-profile-upload {
     height: auto;
     width: 100%;
-    margin-top: 310px;
 }
 .edit-profile-upload a{
     padding: 4px 20px;
@@ -2569,7 +2571,7 @@ border-radius: 20px;
     font-family: "Poppins";
     font-weight: 700;
     line-height: 15px;
-    font-size: 17px;
+    font-size: 15px;
 }
 .recent-title-input-container > div input{
     background: #FAF9F6;
@@ -2584,6 +2586,11 @@ width: 100%;
 .recent-title-input-container > div input[type=text]{
     padding-left: 14px;
     font-family: "Poppins";
+}
+.recent-title-input-container > div input[type=date]{
+    font-family: "Poppins";
+    font-size: 14px;
+    padding-left: 13px;
 }
 
 .recent-next{
@@ -2611,6 +2618,7 @@ border-radius: 5px;
     align-items: center;
     font-family: "Poppins";
     font-weight: 700;
+    margin-top: 10px;
     color: rgba(0, 0, 0, 0.72);
 }
 .current-recent input{
@@ -2654,9 +2662,157 @@ border: 1px solid #4E5A62;
     }
 }
 
-
-
-
+/* =================================== PROFILE EDUCATION ================ */
+.profile-education{
+    height: auto;
+    width: 100%;
+}
+.profile-education-container{
+    display: flex;
+}
+.profile-education-bx1{
+    width: 300px;
+    padding: 30px;
+    background: #4E5A62;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: auto;   
+}
+.profile-education-bx2{
+    width: 100%;
+    padding: 10px 60px;
+    height: auto;
+}
+.profile-education-bx-1-img{
+    height: 120px;
+    width: 120px;
+    border-radius: 100%;
+}
+.profile-education-bx-1-upload{
+    height: auto;
+    width: 100%;
+    /* border: 1px solid #000; */
+}
+.profile-education-bx-1-upload a{
+    display: flex;
+    width: 100%;
+    text-decoration: none;
+    color: #4E5A62 !important;
+    font-family: "Poppins";
+    font-weight: 700;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    background-color: white;
+}
+.profile-education-bx-1-img img{
+    width: 100%;
+}
+.profile-education-input-area{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.profile-education-input-area > div{
+    height: auto;
+    margin: 10px 0px;
+    width: 45%;
+}
+.profile-education-input-area > div h6{
+    font-family: "Poppins";
+    font-size: 15px;
+}
+.profile-education-input-area select{
+    background: #FAF9F6;
+    border: 1px solid #4E5A62;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-family: "Poppins";
+    padding-left: 13px;
+    height: 42px;
+    width: 100%;
+}
+.profile-education-input-area > div input[type=text]{
+    font-family: "Poppins";
+    font-size: 14px;
+    padding-left: 13px;
+}
+.profile-education-input-area > div input[type=date]{
+    font-family: "Poppins";
+    font-size: 14px;
+    padding-left: 13px;
+}
+.profile-education-input-area > div input{
+    background: #FAF9F6;
+    font-family: "Poppins";
+    padding-left: 13px;
+    font-size: 17px;
+    border: 1px solid #4E5A62;
+    box-sizing: border-box;
+    border-radius: 5px;
+    height: 42px;
+    width: 100%;
+}
+.profile-educ-nex-prev{
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    /* border: 1px solid #000; */
+}
+.profile-educ-prev{
+    height: 43px;
+    border: 1px solid #4E5A62;
+    box-sizing: border-box;
+    display: flex;
+    width: 100px;
+    color: #475569 !important;
+    text-decoration: none !important;
+    font-weight: 700;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    font-family: "Poppins";
+    font-size: 14px    ;
+}
+.profile-educ-next{
+    height: 43px;
+    border: 1px solid #4E5A62;
+    box-sizing: border-box;
+    display: flex;
+   background-color: #475569 !important;
+    width: 100px;
+    color: #fff  !important;
+    text-decoration: none !important;
+    font-weight: 700;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    font-family: "Poppins";
+    font-size: 14px    ;
+}
+@media screen and (max-width: 789px){
+    .profile-education-container{
+        display: block;
+        padding-top: 80px;
+    }
+    .profile-education-bx1{
+        width: 100%;
+        align-items: flex-start;
+        height: 30vh;
+    }
+    .profile-education-bx2{
+        padding: 10px 20px;
+    }
+    .profile-education-input-area > div{
+        width: 100%;
+    }
+}
 /* ===================================  SIGN UPP FORM ======================= */
 .signUp-form{
     height: auto;
