@@ -88,10 +88,114 @@
                         <p>Employers scan skills for relevant keywords.</p>
                     </div>
 
-                 
+                    <!-- =================================== PROFILE SKILLS ========================= -->
+                    <div class="profile-skills">
+                        <div class="profile-skills-contain1">
+                            <div class="pro-skill-in">
+                                <h4>Title, industry, keyword</h4>
+                                <div class="skill-ind">
+                                    <div class="skill-title-in">
+                                        <input type="text" name="" id="">
+                                    </div>
+                                    <div class="skill-pro-search">
+                                        <img src="./images/icons/search.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ================ Popular job tilles ============= -->
+                            <div class="pro-popular">
+                                <h1>Popular Job Titles</h1>
+                                <div class="pro-popular1">
+                                    <div>
+                                        <img src="./images/icons/search1.png" alt="">
+                                    </div>
+                                    <div style="padding-left: 12px;">
+                                        Cashier
+                                    </div>
+                                </div>
+                                <div class="pro-popular1">
+                                    <div>
+                                        <img src="./images/icons/search1.png" alt="">
+                                    </div>
+                                    <div style="padding-left: 12px;">
+                                        Customer Service Representative
+
+                                    </div>
+                                </div>
+                                <div class="pro-popular1">
+                                    <div>
+                                        <img src="./images/icons/search1.png" alt="">
+                                    </div>
+                                    <div style="padding-left: 12px;">
+                                        Manager
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <span class="toggleLink" onclick="toggleDisplay('elaboration_1',this)">+ See
+                                        more...</span> <span class="elaboration" id="elaboration_1">
+                                        <div class="pro-popular1">
+                                            <div>
+                                                <img src="./images/icons/search1.png" alt="">
+                                            </div>
+                                            <div style="padding-left: 12px;">
+                                                more
+                                            </div>
+                                        </div>
+
+                                        <div class="pro-popular1">
+                                            <div>
+                                                <img src="./images/icons/search1.png" alt="">
+                                            </div>
+                                            <div style="padding-left: 12px;">
+                                                more
+                                            </div>
+                                        </div>
+
+                                    </span></p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pro-s-2">
+                            <h5>What skills would you like to highlight?</h5>
+
+                            <div class="rate-container">
+                                <div class="rate-bx">
+                                    <div>
+                                        <img src="./images/icons/rating.png" alt="">
+                                    </div>
+                                    <div style="width: 100%;">
+                                        <input type="text">
+                                    </div>
+                                    <div>
+                                        <img src="./images/icons/delete.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="rate-bx">
+                                    <div>
+                                        <img src="./images/icons/rating.png" alt="">
+                                    </div>
+                                    <div style="width: 100%;">
+                                        <input type="text">
+                                    </div>
+                                    <div>
+                                        <img src="./images/icons/delete.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="pro-add">     + Add one more</p>
+                            <!-- <span class="toggleLink" onclick="toggleDisplay('elaboration_1',this)">+ See
+                                more...</span> <span class="elaboration" id="elaboration_2">
+                                dfs
+
+                            </span></p> -->
+                        </div>
+                    </div>
+
                     <div class="profile-educ-nex-prev">
-                         <a href="./edit-profile.html" class="profile-educ-prev">Previous</a>
-                         <a href=""  class="profile-educ-next">Next</a>
+                        <a href="./profile-education.html" class="profile-educ-prev">Previous</a>
+                        <a href="" class="profile-educ-next">Next</a>
 
                     </div>
                 </div>
@@ -104,7 +208,11 @@
 
 
     <script src="./js/app.js"></script>
-</body>
+    <script>
+        function toggleDisplay(d, b) { var c = document.getElementById(d); if (c.style.display == "block") { c.style.display = "none"; if (b) { b.innerHTML = "+ See more..." } } else { c.style.display = "block"; if (b) { b.innerHTML = "- See less..." } } };
 
+
+    </script>
+</body>
 
 </html>

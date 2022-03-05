@@ -224,9 +224,7 @@
         box-shadow:
             0 10px 27px rgba(0, 0, 0, 0.05);
     }
-    .signup_search{
-        /* margin-top: 10px !important; */
-    }
+
     .signup_search input[type=text]{
         padding-left: 10px;
     }
@@ -2668,6 +2666,13 @@ border: 1px solid #4E5A62;
     .recent-title-input-container > div p{
         font-size: 18px;
     }
+    .recent-job-title h1{
+        line-height: 29px;
+        font-size: 20px;
+    }
+    .recent-job-title p{
+        line-height: 23px;
+    }
 }
 
 /* =================================== PROFILE EDUCATION ================ */
@@ -2821,6 +2826,141 @@ border: 1px solid #4E5A62;
     }
     .profile-education-input-area > div{
         width: 100%;
+    }
+}
+
+/* ================================= PROFILE SKILLS ====================== */
+.profile-skills{
+    height: auto;
+    width: 100%;
+    display: flex;
+    margin-top: 50px;
+}
+.profile-skills > div{
+    height: auto;
+    width: 100%;
+    /* border: 1px solid #000;/ */
+}
+.profile-skills-contain1 > div{
+    height: auto;
+    width: 100%;
+    /* border: 1px solid #000; */
+    padding-right: 30px;
+}
+.skill-title-in{
+    width: 100%;
+}
+.skill-title-in input{
+    width: 100% !important;
+    height: 43px;
+    outline: none;
+    background: #FAF9F6;
+    border: 1px solid #4E5A62;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+.skill-ind{
+    display: flex;
+    align-items: center;
+}
+.skill-pro-search img{
+    width: 20px;
+}
+.skill-pro-search{
+    height: 43px;
+    width: 50px;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background-color: #475569;
+}
+.pro-popular{
+    height: 300px;
+    width:100%;
+    /* border: 1px solid #000;/ */
+    margin-top: 25px;
+}
+.pro-popular1{
+    display: flex;
+    align-items: center;
+    font-family: "Poppins";
+    line-height: 30px;
+    padding-top: 20px;
+}
+
+/* ====================== TOGGLE IN READ MORE */
+.toggleLink {
+    color: #4E5A62;
+    text-decoration: none;
+    font-family: "Poppins";
+    font-size: 14px;
+    padding-top: 17px;
+}
+
+.toggleLink:hover {
+    cursor: pointer
+}
+
+.elaboration {
+    display: none
+}
+.pro-skill-in h4{
+    font-family: "Poppins";
+    font-size: 18px;
+    line-height: 30px;
+}
+.pro-popular h1{
+     font-family: "Poppins";
+     font-size: 20px;
+     font-weight: 700;
+     color: rgba(90, 90, 90, 1);
+}
+.pro-popular1 {
+    font-family: "Poppins";
+    color: rgba(0, 0, 0, 0.72);
+
+}
+.rate-container > div{
+    height: auto;
+    width: 100%;
+    margin: 40px 0px;
+    /* border: 1px solid #000; */
+}
+.pro-s-2 h5{
+    font-size: 18px;
+    font-family: "Poppins";
+    color: rgba(0, 0, 0, 0.72);
+}
+.rate-bx{
+    display: flex;
+    align-items: center;
+}
+.rate-bx input{
+    width: 100% !important;
+    height: 40px;
+    background: #FAF9F6;
+border: 1px solid #4E5A62;
+box-sizing: border-box;
+border-radius: 5px;
+}
+.rate-bx img{
+    cursor: pointer;
+}
+.pro-add{
+    font-family: "Poppins";
+    font-size: 14px;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.72);
+    cursor: pointer;
+}
+@media screen and (max-width: 720px){
+    .profile-skills{
+        display: block;
+    }
+    .pro-s-2{
+        margin-top: 30px;
     }
 }
 /* ===================================  SIGN UPP FORM ======================= */
