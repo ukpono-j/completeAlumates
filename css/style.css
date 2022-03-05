@@ -2446,7 +2446,7 @@ border-radius: 20px;
         text-align: center;
          font-family: "Poppins";   
          font-size: 23px;
-         line-height: 3px;
+         line-height: 10px !important;
          font-weight: 400;
          color: white;
     }
