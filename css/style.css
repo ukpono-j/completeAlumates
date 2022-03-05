@@ -872,6 +872,7 @@ align-items: center;
     }
     .footer-copy{
         padding-bottom: 30px;
+        font-size: 14px;
     }
     .footer-socials{
         justify-content: start;
