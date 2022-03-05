@@ -2819,13 +2819,17 @@ border: 1px solid #4E5A62;
     .profile-education-bx1{
         width: 100%;
         align-items: flex-start;
-        height: 30vh;
+        height: auto;
+        padding-bottom: 40px;
     }
     .profile-education-bx2{
         padding: 10px 20px;
     }
     .profile-education-input-area > div{
         width: 100%;
+    }
+    .profile-education-bx-1-upload a{
+        margin-top: 30px;
     }
 }
 
