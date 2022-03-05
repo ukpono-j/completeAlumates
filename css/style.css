@@ -2770,7 +2770,8 @@ border: 1px solid #4E5A62;
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
+    align-items: center;
+    margin-top: 60px;
     margin-bottom: 40px;
     /* border: 1px solid #000; */
 }
