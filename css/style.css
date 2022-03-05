@@ -682,19 +682,26 @@ padding: 0px 20px;
           font-size: 16px;
       }
       .download-btn-12, .download-btn-13 p{
-        font-size: 15px;
+        font-size: 13px;
     }
-    .download-btn-12, .download-btn-12 h5{
-        font-size: 20px;
+    .download-btn-12, .download-btn-13 h5{
+        font-size: 16px;
     }
     .dls{
-        display: block;
+        display: flex;
         justify-content: center;
+        padding-bottom: 50px;
     }
+    .download-btn-12{
+       width: 100%;
+       justify-content: start;
+    }
+
     .download-btn-13{
+        justify-content: start;
         height: 70px;
-        margin: 10px 0px;
-        
+        margin: 0px 3px;
+        width: 100%;
     }
   }
 
