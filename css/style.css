@@ -565,13 +565,15 @@
         width: 100% !important;
         font-size: 20px;
         line-height: 27px;
+        margin-top: 6px !important;
         text-align: center;
     }
     .hero-input{
         width: 100%;
     }
     .hero-logo{
-        margin-top: 60px;
+        margin-top: 30px;
+        font-size: 40px;
     }
     .hb-circle{
         height: 60px;    
@@ -854,9 +856,13 @@ align-items: center;
     .footer-conten21{
         width: 100%;
         padding: 20px 20px;
+        text-align: start;
     }
     .footer-copy{
         padding-bottom: 30px;
+    }
+    .footer-socials{
+        justify-content: start;
     }
 }
   /* ============================  SCHOOL ALBUM PORTAL ====================== */
@@ -2190,7 +2196,7 @@ border-radius: 40px;
          padding: 20px;
     }
     .get-into-network-container h1{
-        font-size: 23px;
+        font-size: 30px;
         font-weight: 700;
         line-height: 28px;
 
@@ -2362,12 +2368,13 @@ color: white;
     text-align: center;
      font-family: "Poppins";   
      font-size: 24px;
-     line-height: 24px;
+     line-height: 10px;
      color: white;
 }
 .not-sub{
     padding-top: 20px;
     font-family: "Poppins";
+    font-size: 24px;
     color: white;
     text-align: center;
 }
@@ -2418,11 +2425,22 @@ border-radius: 20px;
         text-align: center;
          font-family: "Poppins";   
          font-size: 23px;
-         line-height: 27px;
+         line-height: 3px;
+         font-weight: 400;
          color: white;
     }
+    /* .not-register-container h1 span{
+        font-family: 700 !important;
+        font-family: "Poppins";
+    } */
     .not-reg-enter  input{
       width: 100% !important;
+    }
+    .not-reg-enter{
+        font-size: 15px;
+    }
+    .not-sub{
+        font-weight: 700;
     }
 }
 
