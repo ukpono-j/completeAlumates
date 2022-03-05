@@ -2730,6 +2730,7 @@ border: 1px solid #4E5A62;
     border: 1px solid #4E5A62;
     box-sizing: border-box;
     border-radius: 5px;
+    color: #475569 !important;
     font-family: "Poppins";
     padding-left: 13px;
     height: 42px;
