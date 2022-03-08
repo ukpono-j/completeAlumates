@@ -204,6 +204,8 @@
       }
     .navbar {
         padding: 3px 1rem !important ;  
+        display: flex;
+        justify-content: space-between !important;
       }
       .header{
           display: flex ;
