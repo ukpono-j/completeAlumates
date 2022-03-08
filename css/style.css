@@ -87,6 +87,7 @@
       /* width: 54px; */
       display: flex;
       align-items: center;
+      border: 1px solid #fff;
       display: none;
       height: 54px;
   }
