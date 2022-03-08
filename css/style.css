@@ -30,7 +30,7 @@
   
   .navbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between !important;
     border: 1px solid #fff;
     align-items: center;
     width: 100%;
