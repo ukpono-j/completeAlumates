@@ -291,6 +291,7 @@
   
       .sign_menu li a{
         color: #fff !important;
+        font-weight: 500;
         font-size: 16px;
         text-decoration: none;
       }
@@ -550,7 +551,7 @@
   }
   .hero-input-search1{
       height: 50px !important;
-      width: 50px !important;
+      width: 70px !important;
       align-items: center;
       justify-content: center;
       background-color: white;
@@ -582,7 +583,7 @@
           margin-top: 50px !important;
       }
       .already{
-          margin-top: 2px;
+          margin-top: 20px;
           font-size: 13px;
       }
       .county-flag{
@@ -788,7 +789,7 @@ padding: 0px 20px;
   @media screen and (max-width: 789px){
     .download h1{
         font-size: 30px;
-        padding-top: 23px;
+        padding-top: 40px;
       }
     .download{
         padding: 20px 20px;
@@ -818,12 +819,12 @@ padding: 0px 20px;
     .download-btn-13{
         justify-content: start;
         height: 70px;
-        margin: 0px 3px;
+        margin: 0px 10px;
         width: 100%;
         padding: 0px 10px;
 
     }
-  }
+  
 
   /* =============================== EMPTY ============================ */
   .empty{
@@ -2319,7 +2320,7 @@ align-items: center;
 }
 .get-in-next a{
     align-items: center;
-    margin-top: 30px;
+    margin-top: 80px;
     display: flex;
     color: white;
     text-decoration: none;
@@ -2442,7 +2443,12 @@ color: white;
     outline: none;
     border: none;
     height: 40px;
-    background-color: white;
+    /* background-color: white; */
+}
+.resf input{
+    background-color: transparent !important;
+    border-radius: 1px !important;
+    border-bottom: 1px solid #fff;
 }
 .register-continue{
     height: auto;
@@ -2492,7 +2498,7 @@ color: white;
     height: auto;
     width: 100%;
     border: 1px solid #000;
-    background:linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)),  url(../images/bg/network.png);
+    background:linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)),  url(../images/bg/new.png);
     background-position: center;
     background-position: center;
     background-repeat: no-repeat;
@@ -3541,5 +3547,207 @@ border: none;
         font-family: "Poppins";
         font-size: 18px;
         font-weight: 700;
+    }
+}
+
+
+
+
+/* ==============================  alumni-network  ============ */
+
+.alumni-network11{
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),  url(../images/bg/new.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;   
+}
+.alig{
+    width: 30%;
+    /* border: 1px solid #fff; */
+}
+.alig h1{
+    text-align: center;
+    font-family: "Poppins";
+    padding-top: 70px;
+    font-size: 20px;
+    line-height: 21px;
+    padding-bottom: 12px;
+    color: #CDD2FD;
+}
+.alumni-net{
+    height: auto;
+    width: 100% !important;
+    background: rgba(196, 196, 196, 0.47);
+    padding: 20px;
+border-radius: 32px;
+}
+
+.search-alumni {
+    display: flex;
+    justify-content: center;
+}
+.search-alumni a{
+    display: flex;
+    padding: 10px 20px;
+    background: #4E5A62;
+    color: white !important;
+    text-decoration: none;
+    font-family: "Poppins";
+   margin: 30px 0px;
+border-radius: 40px;
+text-align: center;
+align-items: center;
+justify-content: center;
+font-size: 13px;
+}
+.invited-friend{
+    height: 90px;
+    width: 100%;
+    /* border: 1px solid #fff; */
+}
+.invite-code{
+    height: auto;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    /* border: 1px solid #fff; */
+    margin-top: 12px;
+}
+.invite-profile{
+    height: auto;
+    display: flex;
+    padding: 20px 0px;
+    align-items: center;
+    width: 100%;
+    border-bottom: 1px solid #fff;
+    margin-top: 17px;
+}
+.invite-signup{
+    height: auto;
+    padding: 30px 0px;
+    width: 100%;
+    color: white;
+    font-family: "Poppins";
+    /* border: 1px solid #fff; */
+    margin-top: 70px;
+}
+.invite-agreed{
+    margin-top: 20px;
+    /* border: 1px solid #fff; */
+    height: auto;
+    font-family: "Poppins";
+
+    color: white;
+    display: flex;
+}
+.fdsd{
+    padding-left: 10px;
+}
+.ci{
+    width: 40px;
+    height: 20px;
+    /* background-color: #fff; */
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.invite-agreed input{
+    width: 12px;
+    height: 12px;
+    border: 1px solid #5A5A5A;
+}
+.invite-congrat{
+    height: auto;
+    text-align: center;
+    font-family: "Poppins";
+    color: white;
+    font-weight: 700;
+    /* border: 1px solid #fff; */
+    width: 100%;
+    margin-top: 20px;
+}
+.invited-friend{
+    font-family: "Poppins";
+    color: white    ;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.invited-friend-2{
+    display: flex;
+    align-items: center;
+}
+.invited-friend-2 > div{
+    display: flex;
+    align-items: center;
+    margin: 20px;
+}
+.invited-friend-2 > div input{
+    margin: 10px;
+}
+.invite-code input{
+    width: 100%;
+    height: 40px;
+    background-color: #fff;
+    background: #FFFFFF;
+    outline: none;
+    border-radius: 8px 0px 0px 8px;
+    border: none;
+}
+.invite-code input[type=text]{
+    padding-left: 10px;
+    font-family: "Poppins";
+}
+.invite-code-1{
+    height: 40px;
+    width: 60px;
+    background: #4E5A62;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+border-radius: 0px 8px 8px 0px;
+}
+.invite-code-1 img{
+     width: 23px;
+}
+.invite-profile-1{
+    height: 40px;
+    width: 40px;
+    border: 1px solid #fff;
+    border-radius: 100%;
+}
+.invite-profile-1 img{
+    width: 100%;
+}
+.invite-profile-name{
+    font-family: "Poppins";
+    padding-left: 10px;
+    color: white;
+}
+.invite-signUp-1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.invite-signUp-1 > div{
+    margin: 10px;
+}
+.invite-signup{
+    text-align: center;
+}
+@media screen and (max-width: 789px){
+    .alig{
+        width: 100%;
+    }
+    .invited-friend-2 > div{
+        margin: 5px;
+    }
+    .invited-friend{
+        font-size: 14px;
     }
 }
