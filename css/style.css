@@ -567,7 +567,7 @@
   }
   .hero-input-search1{
       height: 50px !important;
-      width: 70px !important;
+      width: 100px !important;
       align-items: center;
       justify-content: center;
       background-color: white;
@@ -665,7 +665,7 @@
   @media screen and (max-width: 769px){
   
     .join{
-        width: 50%;
+        width: 70%;
         background: #6979F8;
         border-radius: 5px;
         display: flex;
@@ -678,7 +678,7 @@
     }
     .wait{
         text-align: center;
-        margin-top: 60px !important;
+        margin-top: 140px !important;
         display: block;
         color: white !important;
         font-family: "Poppins";
