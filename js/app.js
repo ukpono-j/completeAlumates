@@ -41,3 +41,34 @@ $('.employer__button').click(function(e) {
   $('#edit-firstname').focus(); //Should appear after $('.portal_employer').show(); because if it's before that, the register form doesn't exist in the DOM
 });
 
+
+
+$("#signUp1").click((e)=>{
+  e.preventDefault()
+let first_name = "ukpono", last_name = $("#some-id").val()
+  $.ajax({
+    method: "POST",
+    url: "https://alumates.herokuapp.com/api/register",
+    data: { first_name: first_name, last_name: "Akpan", email: "ukponoakpan270@gmail.com", phone_number:"08163423850", password: "stiles12" }
+  })
+})
+
+$("#signUp1").click((e)=>{
+  e.preventDefault()
+let email = "ukpono", password = $("#some-id").val()
+  $.ajax({
+    method: "POST",
+    url: "https://alumates.herokuapp.com/api/register",
+    data: { first_name: first_name, last_name: "Akpan", email: "ukponoakpan270@gmail.com", phone_number:"08163423850", password: "stiles12" }
+  })
+})
+
+
+
+function onSignIn(googleUser) {
+  var profile = googleUser.getBasicProfile();
+  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  console.log('Name: ' + profile.getName());
+  console.log('Image URL: ' + profile.getImageUrl());
+  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+}
