@@ -14,9 +14,12 @@
     <link rel="stylesheet" href="./css/style.css">
     <!-- <link rel="stylesheet" href="css/tailwind.css"> -->
     <!-- jQuery first then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
@@ -47,13 +50,13 @@
                         <li><a href="./job-portal.html">Jobs</a></li>
                         <li><a href="./freelance.html">Freelance</a></li>
                         <li><a href="">Busines</a></li>
-                        <li><a href="./school-album-portal.html">School Album</a></li>
+                        <li><a href="./deep-search.html">School Album</a></li>
                         <li><a href="">Investment</a></li>
                     </div>
                 </ul>
 
                 <div class="profile_bx">
-                    <a href="#">
+                    <a href="./profile.html">
                         <img src="./images/icons/profile1.jpg" alt="" class="profile_picx">
                     </a>
                 </div>
@@ -64,34 +67,37 @@
 
         <!-- ============================= GET INTO NETWORK ======================= -->
         <div class="get-into-network">
-             <div class="get-into-network-container">
-                  <h1>Lets have the details of your school</h1>
-                  <div>
-                      <select name="" id="">
-                          <option value="">Select your school type</option>
-                      </select>
-                  </div>
-                  <div>
-                      <h5>Which country did you school in?</h5>
-                      <input type="text" name="" id="">
-                  </div>
-                  <div>
-                      <h5>Which state is the school situated?</h5>
-                      <input type="text" name="" id="">
-                  </div>
-                  <div>
-                      <h5>What is the name of your school?</h5>
-                      <input type="text" name="" id="">
-                  </div>
-                  <div>
-                      <h5>What year did you graduate?</h5>
-                      <input type="text" name="" id="">
-                  </div>
+            <div class="get-into-network-container">
+                <h1>Lets have the details of your school</h1>
+                <div>
+                    <select name="" id="">
+                        <option value="">Select your school type</option>
+                    </select>
+                </div>
+                <div>
+                    <h5>Which country did you school in?</h5>
+                    <input list="countries" id="country">
+                    <datalist id="countries"> </datalist>
 
-                  <div class="get-in-next">
-                      <a href="./not-registered.html">Next</a>
-                  </div>
-             </div>
+                </div>
+                <div>
+                    <h5>Which state is the school situated?</h5>
+                    <input list="states" id="state">
+                    <datalist id="states"> </datalist>
+                </div>
+                <div>
+                    <h5>What is the name of your school?</h5>
+                    <input type="text" name="" id="">
+                </div>
+                <div>
+                    <h5>What year did you graduate?</h5>
+                    <input type="text" name="" id="">
+                </div>
+
+                <div class="get-in-next">
+                    <a href="./not-registered.html">Next</a>
+                </div>
+            </div>
         </div>
     </div>
 

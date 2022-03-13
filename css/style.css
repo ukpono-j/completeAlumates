@@ -559,14 +559,14 @@
   }
   .hero-input input{
       width: 100%;
-      height: 50px;
+      height: 40px;
       border-top-left-radius: 40px;
       border-bottom-left-radius: 40px;
       outline: none;
       border: none;
   }
   .hero-input-search1{
-      height: 50px !important;
+      height: 40px !important;
       width: 100px !important;
       align-items: center;
       justify-content: center;
@@ -579,6 +579,7 @@
   }
   .hero-input input[type=text]{
       padding-left: 20px;
+      font-size: 13px;
   }
   .county-flag{
       height: auto;
@@ -1090,8 +1091,8 @@ align-items: center;
     background-color: #fff;
 }
 .school-album-flex{
-    display: flex;
-    justify-content: space-between;
+    /* display: flex;
+    justify-content: space-between; */
     padding: 20px 10px;
     font-family: "Poppins";
 }
@@ -1163,6 +1164,9 @@ align-items: center;
     line-height: 10px;
     color: rgba(0, 0, 0, 0.62);
 }
+.FD h4{
+    font-size: 13px;
+} 
 .FD >  h4, p{
     font-family: "Poppins";
     /* color: rgba(0, 0, 0, 0.72); */
@@ -1218,7 +1222,10 @@ align-items: center;
         font-size: 18px;
         /* line-height: 40px; */
     }
-
+    .FD h4{
+        font-size: 15px;
+        font-family: "Poppins";
+    } 
   }
 
 
@@ -2319,6 +2326,8 @@ align-items: center;
     width: 100%;
     height: 30px;
     outline: none;
+    padding-left: 14px;
+    font-family: "Poppins";
     color: white;
     background-color: transparent;
     border-bottom: 1px solid #fff;
@@ -3283,6 +3292,7 @@ height: 40px;
     background-color: transparent;
 }
 .signUp-1 input{
+
     width: 100%;
     height: 30px;
     outline: none;
@@ -3291,6 +3301,14 @@ height: 40px;
     border-top: transparent;
     border-left: transparent;
     border-right: transparent;
+}
+.signUp-1 input[type=text]{
+    color: white ;
+    font-family: "Poppins";
+}
+.signUp-1 input[type=password]{
+    color: white ;
+    font-family: "Poppins";
 }
 .signUp-1 p{
     padding-top: 20px;
