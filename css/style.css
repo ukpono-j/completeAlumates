@@ -43,7 +43,9 @@
   }
   .hamburger {
     display: none;
+    /* border: 1px solid #fff; */
     z-index: 10000;
+    height: 40px;
     /* position: fixed; */
   }
   
@@ -92,7 +94,11 @@
       display: none;
       height: 54px;
   }
-
+.profile_bx1{
+    color: white;
+    text-decoration: none;
+    font-family: "Poppins";
+}
   .profile_bx img{
       height: 34px;
       object-fit: contain;
@@ -520,6 +526,7 @@
   .content1{
     max-height: 100vh;
       width: 100%;
+      /* border: 1px solid #fff; */
       padding: 40px;
   }
   .hero-logo-img {
@@ -597,7 +604,7 @@
   }
   @media screen and (max-width: 789px){
       .hero-input{
-          margin-top: 50px !important;
+          margin-top: 80px !important;
       }
       .already{
           margin-top: 20px;
@@ -679,7 +686,7 @@
     }
     .wait{
         text-align: center;
-        margin-top: 140px !important;
+        margin-top: 180px !important;   
         display: block;
         color: white !important;
         font-family: "Poppins";
@@ -1026,7 +1033,7 @@ align-items: center;
   .school-album-portal{
       height: auto;
       width: 100%;
-      background: url(../images/bg/Rectangle\ 26.png);
+      background: url(../images/bg/Rectangle\ 26.png) !important;
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
@@ -3798,3 +3805,22 @@ border-radius: 0px 8px 8px 0px;
     }
 }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

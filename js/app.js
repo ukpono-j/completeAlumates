@@ -121,24 +121,58 @@ $(() => {
   // ======================= STATE ===================
 
 
-    $("#state").keyup(function () { 
-      const stateName = $("#state").val()
-      stateNameUrl = `https://alumates.herokuapp.com/api/state/${stateName}`;
+  $("#state").keyup(function () {
 
-      $.ajax({
-        url: stateNameUrl,
-      }).done(function (response) {
-        states = JSON.parse(response)
-        console.log(states)
-        $.map(states, function (index) {
+    const stateName = $("#state").val()
+    stateNameUrl = `https://alumates.herokuapp.com/api/state/${stateName}`;
 
-          $("#states").append(`<option id='${index.id}' value="${index.name}">`)
-        })
+    $.ajax({
+      url: stateNameUrl,
+    }).done(function (response) {
+      states = JSON.parse(response)
+      console.log(states)
+      $.map(states, function (index) {
+
+        $("#states").append(`<option id='${index.id}' value="${index.name}">`)
       })
+    })
 
-    });
+  });
 
-  
+  $("#schoolNames").keyup(function () {
+
+    // const schoolMainNames = $("#schoolNames").val()
+    // schoolNameUrl = `https://alumates.herokuapp.com/api/school/{name}${schoolMainNames}`;
+    schoolNameUrl = `https://alumates.herokuapp.com/api/schools/`;
+
+    $.ajax({
+      url: "https://alumates.herokuapp.com/api/schools/"  ,
+      success: function (data) {
+        console.log(data)
+        // data.forEach(element => {
+        //   $("")
+        // })
+      }
+    })
+  });
+
+
+
+  // $(document).ready(function(){
+  //   $("#schoolName").keyup(function(){
+  //     const stateDataName = $("#schoolName").val()
+  //     $.ajax({
+  //       type: "Post",
+  //       url: "https://alumates.herokuapp.com/api/school/{name}" , 
+  //       data: stateDataName, 
+  //       sucess: function(data){
+  //         $("#schoolNames").html(data);
+  //       }
+  //     });
+  //   });
+  // });
+
+
   // $.ajax({
   //   url: countryUrl,
   // }).done(function (response) {
@@ -149,7 +183,8 @@ $(() => {
   //   })  
   // })
 
+  
+
 
 })
-
 
