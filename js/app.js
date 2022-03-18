@@ -97,8 +97,20 @@ $(() => {
   })
 
   // ============================ COUNTRY ==============
+  function delay(callback, ms) {
+    var timer = 0;
+    return function() {
+      var context = this, args = arguments;
+      clearTimeout(timer);
+      timer = setTimeout(function () {
+        callback.apply(context, args);
+      }, ms || 0);
+    };
+  }
+  
 
-  $("#country").keyup(function () {
+
+  $("#country").keyup(delay (function () {
 
     const countryName = $("#country").val()
     countryNameUrl = `https://alumates.herokuapp.com/api/country/${countryName}`;
@@ -117,7 +129,7 @@ $(() => {
       })
     })
 
-  });
+  }, 500));
   // ======================= STATE ===================
 
 
