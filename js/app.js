@@ -21,17 +21,6 @@ function closeMenu() {
 
 
 
-
-
-
-function onSignIn(googleUser) {
-  var profile = googleUser.getBasicProfile();
-  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-  console.log('Name: ' + profile.getName());
-  console.log('Image URL: ' + profile.getImageUrl());
-  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-}
-
 let countryUrl = "https://alumates.herokuapp.com/api/countries", data = {}
 
 
@@ -79,9 +68,14 @@ $(() => {
   });
 
 
+  // ================== API INIT ==================
   let registerUrl = "https://alumates.herokuapp.com/api/register",
     loginUrl = "https://alumates.herokuapp.com/api/login",
-    countryUrl = "https://alumates.herokuapp.com/api/countries",
+    // countryUrl = "https://alumates.herokuapp.com/api/countries",
+    // stateUrl = "https://alumates.herokuapp.com/api/{country_id}/state",
+    schooltypeUrl ="https://alumates.herokuapp.com/api/school_types"
+  // ==================End of  api init ==================
+
 
     registerData = { first_name: "ukpono", last_name: "Akpan", email: "ukponoakpan270@gmail.com", phone_number: "08163423850", password: "stiles12" },
     loginData = { email: "ukponoakpan270@gmail.com", password: "stiles12" }
@@ -133,13 +127,15 @@ $(() => {
   // ======================= STATE ===================
 
 
-  $("#state").keyup(function () {
+  $("#state").keyup(delay(function () {
 
     const stateName = $("#state").val()
-    stateNameUrl = `https://alumates.herokuapp.com/api/state/${stateName}`;
+    countryNameUrl = `https://alumates.herokuapp.com/api/{country_id}/state/${stateName}`;
 
+
+    console.log(stateUrl)
     $.ajax({
-      url: stateNameUrl,
+      url: countryNameUrl,
     }).done(function (response) {
       states = JSON.parse(response)
       console.log(states)
@@ -149,54 +145,67 @@ $(() => {
       })
     })
 
-  });
+  }, 800));
 
-  $("#schoolNames").keyup(function () {
-
-    // const schoolMainNames = $("#schoolNames").val()
-    // schoolNameUrl = `https://alumates.herokuapp.com/api/school/{name}${schoolMainNames}`;
-    schoolNameUrl = `https://alumates.herokuapp.com/api/schools/`;
-
-    $.ajax({
-      url: "https://alumates.herokuapp.com/api/schools/"  ,
-      success: function (data) {
-        console.log(data)
-        // data.forEach(element => {
-        //   $("")
-        // })
-      }
-    })
-  });
+  // $("#schoolNames").keyup(function () {
 
 
+  //   schoolNameUrl = `https://alumates.herokuapp.com/api/schools/`;
 
-  // $(document).ready(function(){
-  //   $("#schoolName").keyup(function(){
-  //     const stateDataName = $("#schoolName").val()
-  //     $.ajax({
-  //       type: "Post",
-  //       url: "https://alumates.herokuapp.com/api/school/{name}" , 
-  //       data: stateDataName, 
-  //       sucess: function(data){
-  //         $("#schoolNames").html(data);
-  //       }
-  //     });
-  //   });
+  //   $.ajax({
+  //     url: "https://alumates.herokuapp.com/api/schools/"  ,
+  //     success: function (data) {
+  //       console.log(data)
+  //     }
+  //   })
   // });
 
 
-  // $.ajax({
-  //   url: countryUrl,
-  // }).done(function (response) {
-  // countries = JSON.parse(response)
-  //   $.map(countries, function(index){
-  //     console.log(index.name)
-  //     countrySelections.append(`<option value="${index.id}">${index.name}</option>`)
-  //   })  
-  // })
+
+  $("#selectSchool").click(function () {
+
+    const school_types = $("#selectSchool").val()
+    selectSchoolUrl = `https://alumates.herokuapp.com/api/school_types/${school_types}`;
+    console.log(selectSchoolUrl)
+
+    $.ajax({
+      url: selectSchoolUrl,
+    }).done(function (response) {
+      selectSchools = JSON.parse(response)
+
+      
+      $.map(selectSchools, function (index) {
+
+        $("#selectSchools").append(`<option id='${index.id}' value="${index.name}">`)
+      })
+    })
+
+  });
+
 
   
 
+  function onSignIn(googleUser) {
+    var profile = googleUser.getBasicProfile();
+    $("#name").text(profile.getName());
+    $("#email").text(profile.getEmail());
+    $("#image").attr('src', profile.getImageUrl());
+    $(".data").css("display", "block");
+    $(".g-signin2").css("display", "none");
+  }
+  
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+        alert("You have been signed out successfully");
+        $(".data").css("display", "none");
+        $(".g-signin2").css("display", "block");
+    });
+  }
 
+
+  
 })
+
+
 

@@ -22,7 +22,7 @@
       position:  relative !important;
   }
   .hero-header{
-    background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(../images/bg/03.jpg) no-repeat center;
+    background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(../images/bg/newbackground.jpeg) no-repeat center;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -3821,6 +3821,23 @@ border-radius: 0px 8px 8px 0px;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+data{
+    display: none;
+}
 
 
 
