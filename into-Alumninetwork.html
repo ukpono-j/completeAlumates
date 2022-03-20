@@ -20,7 +20,6 @@
         crossorigin="anonymous"></script> -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
@@ -71,20 +70,25 @@
             <div class="get-into-network-container">
                 <h1>Lets have the details of your school</h1>
                 <div>
-                    <select name="" id="selectSchool">
-                        <option value="" id="selectSchools">Select your school type</option>
+                    <select id="selectSchool">
+                        <option value="">Select your school type</option>
                     </select>
                 </div>
                 <div>
                     <h5>Which country did you school in?</h5>
-                    <input list="countries" id="country">
-                    <datalist id="countries"> </datalist>
-
+                    <!-- <input list="countries" name="country" id="" autocomplete="off">
+                    <datalist id="countries"> </datalist> -->
+                    <select id="country">
+                        <option value="">Select your country</option>
+                    </select>
                 </div>
                 <div>
                     <h5>Which state is the school situated?</h5>
-                    <input list="states" id="state">
-                    <datalist id="states"> </datalist>
+                    <!-- <input list="states" id="state">
+                    <datalist id="states"> </datalist> -->
+                    <select id="state">
+                        <option value="">Select your state</option>
+                    </select>
                 </div>
                 <div>
                     <h5>What is the name of your school?</h5>
@@ -97,7 +101,7 @@
                 </div>
 
                 <div class="get-in-next">
-                    <a href="./not-registered.html">Next</a>
+                    <a href="./not-registered.html" id="Save" value="Save Data">Next</a>
                 </div>
             </div>
         </div>
