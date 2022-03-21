@@ -137,7 +137,7 @@ $(() => {
     let countryName = $("#country option:selected").val(),
       countryId = $("#country option:selected").data('id'),
 
-      stateNameUrl = `https://alumates.herokuapp.com/api/${countryId}/state`;
+      stateNameUrl = `https://alumates.herokuapp.com/api/${countryId}/states`;
     // console.log(stateNameUrl)
     $.ajax({
       url: stateNameUrl,
@@ -180,6 +180,17 @@ $(() => {
     })
     let schoolType = $("#selectSchool").val(),
       schoolUrl = `https://alumates.herokuapp.com/api/${stateId}/city/school/${schoolType}`
+
+      // console.log(schoolUrl)
+      // $.ajax({
+      //   url: stateNameUrl,
+      // }).done(function (response) {
+      //   states = JSON.parse(response)
+      //   $.map(states, function (index) {
+      //     $("#state").append(`<option data-id="${index.id}"  value="${index.name}">${index.name}</option>`)
+      //     // countryId = 
+      //   })
+      // })
 
   });
 
