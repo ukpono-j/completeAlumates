@@ -104,35 +104,20 @@ $(() => {
     }
 
     const schoolTypeUrl = 'https://alumates.herokuapp.com/api/school_types'
-
-    get(schoolTypeUrl)
-
-    console.log(get(schoolTypeUrl))
-
-
-
-    // $.ajax({
-    //   url: schoolTypeUrl,
-    // }).done(function (response) {
-    //   schoolType = JSON.parse(response)
-    //   $.map(schoolType, function (index) {
-    //     $("#selectSchool").append(`<option data-id='${index.id}' value="${index.name}">${index.name}</option>`)
-    //   })
-    // })
+    get(schoolTypeUrl).done(function(response) {
+        schoolType = JSON.parse(response)
+        $.map(schoolType, function(index) {
+            $("#selectSchool").append(`<option data-id='${index.id}' value="${index.name}">${index.name}</option>`)
+        })
+    })
 
     $("#selectSchool").change(function() {
         let schoolType = $("#selectSchool option:selected").val(),
             schoolTypeId = $("#selectSchool option:selected").data('id')
     });
 
-    $("#country").keyup(delay(function() {
-        const countryName = $("#country").val()
-    }, 500));
-
     const countryNameUrl = `https://alumates.herokuapp.com/api/countries`;
-    $.ajax({
-        url: countryNameUrl,
-    }).done(function(response) {
+    get(countryNameUrl).done(function(response) {
         data = JSON.parse(response)
         $.map(data, function(index) {
             $("#country").append(`<option data-id="${index.id}"  value="${index.name}">${index.name}</option>`)
@@ -140,47 +125,37 @@ $(() => {
     })
 
     // ======================= STATE ===================
-
     $("#country").change(function() {
         let countryName = $("#country option:selected").val(),
             countryId = $("#country option:selected").data('id'),
 
             stateNameUrl = `https://alumates.herokuapp.com/api/${countryId}/states`;
         // console.log(stateNameUrl)
-        $.ajax({
-            url: stateNameUrl,
-        }).done(function(response) {
+        get(stateNameUrl).done(function(response) {
             states = JSON.parse(response)
             $.map(states, function(index) {
                 $("#state").append(`<option data-id="${index.id}"  value="${index.name}">${index.name}</option>`)
-
             })
         })
     });
 
-    // $("#state").keyup(delay(function () {}, 500));
-
     // ======================= CITIES ===================
+
+
+    // ======================= SCHOOLS ===================
     $("#state").change(function() {
         let stateName = $("#state option:selected").val(),
             schoolTypeId = $("#selectSchool option:selected").data('id')
         stateId = $("#state option:selected").data('id'),
             schoolsUrl = `https://alumates.herokuapp.com/api/${stateId}/cities/schools/${schoolTypeId}`;
 
-        $.ajax({
-            url: schoolsUrl,
-        }).done(function(response) {
+        get(schoolsUrl).done(function(response) {
             data = JSON.parse(response)
             $.map(data, function(index) {
                 $("#schools").append(`<option data-id="${index.id}"  value="${index.name}">${index.name}</option>`)
-
             })
-
         })
-
     });
-
-    // ======================= SCHOOLS ===================
 
 
 
@@ -244,23 +219,6 @@ $(() => {
 
 
 
-    // function onSignIn(googleUser) {
-    //     var profile = googleUser.getBasicProfile();
-    //     $("#name").text(profile.getName());
-    //     $("#email").text(profile.getEmail());
-    //     $("#image").attr('src', profile.getImageUrl());
-    //     $(".data").css("display", "block");
-    //     $(".g-signin2").css("display", "none");
-    // }
-
-    // function signOut() {
-    //     var auth2 = gapi.auth2.getAuthInstance();
-    //     auth2.signOut().then(function() {
-    //         alert("You have been signed out successfully");
-    //         $(".data").css("display", "none");
-    //         $(".g-signin2").css("display", "block");
-    //     });
-    // }
 })
 
 

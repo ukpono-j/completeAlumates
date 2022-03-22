@@ -1,15 +1,12 @@
-
 function get(url) {
-    $.ajax({
-        url: url,
-      }).done(function (response) {
-        schoolType = JSON.parse(response)
-        // $.map(schoolType, function (index) {
-        //   $("#selectSchool").append(`<option data-id='${index.id}' value="${index.name}">${index.name}</option>`)
-        // })s
-        return schoolType
+    return $.ajax({
+        url: url
     })
 }
-// function post(url, data) {
-   
-// }
+
+function post(url, data) {
+    return $.ajax({
+        url: url,
+        data: data
+    })
+}
