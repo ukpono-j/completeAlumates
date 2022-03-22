@@ -103,14 +103,21 @@ $(() => {
   }
 
   const schoolTypeUrl = 'https://alumates.herokuapp.com/api/school_types'
-  $.ajax({
-    url: schoolTypeUrl,
-  }).done(function (response) {
-    schoolType = JSON.parse(response)
-    $.map(schoolType, function (index) {
-      $("#selectSchool").append(`<option data-id='${index.id}' value="${index.name}">${index.name}</option>`)
-    })
-  })
+
+  get(schoolTypeUrl)
+
+  console.log(get(schoolTypeUrl))
+
+
+
+  // $.ajax({
+  //   url: schoolTypeUrl,
+  // }).done(function (response) {
+  //   schoolType = JSON.parse(response)
+  //   $.map(schoolType, function (index) {
+  //     $("#selectSchool").append(`<option data-id='${index.id}' value="${index.name}">${index.name}</option>`)
+  //   })
+  // })
 
   $("#selectSchool").change(function () {
     let schoolType = $("#selectSchool option:selected").val(),
@@ -145,7 +152,7 @@ $(() => {
       states = JSON.parse(response)
       $.map(states, function (index) {
         $("#state").append(`<option data-id="${index.id}"  value="${index.name}">${index.name}</option>`)
-        // countryId = 
+    
       })
     })
   });
@@ -155,43 +162,21 @@ $(() => {
   // ======================= CITIES ===================
   $("#state").change(function () {
     let stateName = $("#state option:selected").val(),
-      stateId = $("#state option:selected").data('id'),
-      cityUrl = `https://alumates.herokuapp.com/api/${stateId}/city`;
+      schoolTypeId = $("#selectSchool option:selected").data('id')
+    stateId = $("#state option:selected").data('id'),
+      schoolsUrl = `https://alumates.herokuapp.com/api/${stateId}/cities/schools/${schoolTypeId}`;
 
     $.ajax({
-      url: cityUrl,
+      url: schoolsUrl,
     }).done(function (response) {
       data = JSON.parse(response)
-
       $.map(data, function (index) {
-        let cityName = index.name,
-          cityId = index.id,
-          schoolUrl = ` https://alumates.herokuapp.com/api/city/${cityId}/school`,
-          schoolNameUrl = `https://alumates.herokuapp.com/api/${cityId}/school/${cityName}`;
-
-        $.ajax({
-          url: schoolUrl,
-        }).done(function (response) {
-          data = JSON.parse(response)
-          // console.log(data)
-        })
+        $("#schools").append(`<option data-id="${index.id}"  value="${index.name}">${index.name}</option>`)
+    
       })
-
+     
     })
-    let schoolType = $("#selectSchool").val(),
-      schoolUrl = `https://alumates.herokuapp.com/api/${stateId}/city/school/${schoolType}`
-
-      // console.log(schoolUrl)
-      // $.ajax({
-      //   url: stateNameUrl,
-      // }).done(function (response) {
-      //   states = JSON.parse(response)
-      //   $.map(states, function (index) {
-      //     $("#state").append(`<option data-id="${index.id}"  value="${index.name}">${index.name}</option>`)
-      //     // countryId = 
-      //   })
-      // })
-
+ 
   });
 
   // ======================= SCHOOLS ===================
@@ -248,6 +233,29 @@ $(() => {
   })
 
 
+
+
+
+
+  $('.school').click(function () {
+    var selectedSchool = $(this).find('option:selected').val(); //Select the school code which is stored as value for option
+    $.ajax({
+      url: 'https://alumates.herokuapp.com/api/schools', //Write a function in the server side which accepts school code as argument
+      type: 'POST',
+      dataType: 'json',//return type from server side function [return it as JSON object]
+      contentType: "application/json",
+      data: JSON.stringify(selectedSchool), //Pass the data to the function on server side
+      success: function (data) { //Array of data returned from server side function
+        $.each(data, function (value) {
+          $('.course').append('<option>' + value + '</option>');
+        });
+      },
+      error:
+        function (data) {
+          //display any unhandled error
+        }
+    });
+  });
 
 })
 
