@@ -235,19 +235,17 @@ function onSignIn(googleUser) {
         email: profile.getEmail()
     }
 
-    post(registerUrl, data).done(function(response) {
+    post(registerUrl, registrationDetails).done(function(response) {
         data = JSON.parse(response)
-        $.map(data, function(index) {
-            $("#country").append(`<option data-id="${index.id}"  value="${index.name}">${index.name}</option>`)
-        })
+        console.log(data)
     })
 
     // console.log('ID: ' + profile.getAuthResponse().id_token);
-    console.log('Name: ' + profile.getName());
-    console.log('Name: ' + profile.getGivenName());
-    console.log('Name: ' + profile.getFamilyName());
-    console.log('Image URL: ' + profile.getImageUrl());
-    console.log('Email: ' + profile.getEmail());
+    // console.log('Name: ' + profile.getName());
+    // console.log('Name: ' + profile.getGivenName());
+    // console.log('Name: ' + profile.getFamilyName());
+    // console.log('Image URL: ' + profile.getImageUrl());
+    // console.log('Email: ' + profile.getEmail());
 }
 
 function signOut() {
