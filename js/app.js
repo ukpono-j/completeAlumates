@@ -238,7 +238,7 @@ function onSignIn(googleUser) {
     //     })
     // })
 
-    console.log('ID: ' + profile.getAuthResponse().id_token);
+    // console.log('ID: ' + profile.getAuthResponse().id_token);
     console.log('Name: ' + profile.getName());
     console.log('Name: ' + profile.getGivenName());
     console.log('Name: ' + profile.getFamilyName());
