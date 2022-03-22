@@ -105,15 +105,16 @@
                             <a href="#" onclick="signOut();">Sign out</a>
                             <script>
                                 function signOut() {
-                                    try {
-                                        console.log(gapi.auth2.getAuthInstance().signOut())
-                                    } catch (error) {
-                                        console.log('There was an error');
-                                    }
-                                    // var auth2 = gapi.auth2.getAuthInstance();
-                                    // auth2.signOut().then(function() {
-                                    //     console.log('User signed out.');
-                                    // });
+                                    console.log(document.cookie)
+                                        // try {
+                                        //     console.log(gapi.auth2.getAuthInstance().signOut())
+                                        // } catch (error) {
+                                        //     console.log('There was an error');
+                                        // }
+                                        // var auth2 = gapi.auth2.getAuthInstance();
+                                        // auth2.signOut().then(function() {
+                                        //     console.log('User signed out.');
+                                        // });
                                 }
                             </script>
                         </div>
