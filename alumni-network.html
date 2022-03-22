@@ -106,7 +106,7 @@
                             <script>
                                 function signOut() {
                                     try {
-                                        console.log(gapi.auth2.getAuthInstance())
+                                        console.log(gapi.auth2.getAuthInstance().signOut())
                                     } catch (error) {
                                         console.log('There was an error');
                                     }
