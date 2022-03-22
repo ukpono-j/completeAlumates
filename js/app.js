@@ -228,15 +228,19 @@ $(() => {
 
 function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
-    // const registerUrl = `https://alumates.herokuapp.com/api/register`;
-    // let registrationDetails = { first_name, last_name, email }
+    const registerUrl = `https://alumates.herokuapp.com/api/register`;
+    let registrationDetails = {
+        first_name: profile.getGivenName(),
+        last_name: profile.getFamilyName(),
+        email: profile.getEmail()
+    }
 
-    // post(registerUrl, data).done(function(response) {
-    //     data = JSON.parse(response)
-    //     $.map(data, function(index) {
-    //         $("#country").append(`<option data-id="${index.id}"  value="${index.name}">${index.name}</option>`)
-    //     })
-    // })
+    post(registerUrl, data).done(function(response) {
+        data = JSON.parse(response)
+        $.map(data, function(index) {
+            $("#country").append(`<option data-id="${index.id}"  value="${index.name}">${index.name}</option>`)
+        })
+    })
 
     // console.log('ID: ' + profile.getAuthResponse().id_token);
     console.log('Name: ' + profile.getName());
