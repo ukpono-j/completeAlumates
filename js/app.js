@@ -88,7 +88,7 @@ $(() => {
     })
 
     $("#signIn").click((e) => {
-        e.preventDefault()
+        // e.preventDefault()   
         postRequest(loginUrl, loginData)
     })
 
