@@ -979,7 +979,7 @@
 
 @media screen and (max-width: 720px) {
     .empty-container {
-        padding: 40px 20px;
+        padding: 40px 12px;
     }
     .empty1-container h4 {
         font-size: 22px;
@@ -997,7 +997,7 @@
         margin: 17px 0px;
     }
     .empty-container {
-        padding: 10px 20px;
+        padding: 10px 12px;
     }
 }
 
