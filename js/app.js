@@ -20,6 +20,7 @@ function closeMenu() {
 
 
 
+
 let countryUrl = "https://alumates.herokuapp.com/api/countries",
     data = {}
 
@@ -81,6 +82,7 @@ $(() => {
         loginData = { email: "ukponoakpan270@gmail.com", password: "stiles12" }
 
     $("#signUp1").click((e) => {
+
         e.preventDefault()
         postRequest(registerUrl, registerData)
     })
