@@ -117,7 +117,10 @@
                         <div class="google-img"><img src="./images/icons/google3.png" alt=""></div>
                         <div class="google-content">Continue with Google</div>
                     </div> -->
-                    <div id="my-signin2" data-onsuccess="onSignIn"></div>
+                    <div>
+                        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                        <a href="#" onclick="signOut();">Sign out</a>
+                    </div>
                     <div class="signUp-apple">
                         <div class="apple-img"><img src="./images/icons/apple1.png" alt=""></div>
                         <div class="apple-content">Continue with Apple</div>
@@ -125,9 +128,7 @@
                 </div>
 
             </div>
-            <!-- <div class="signUp-foot">
-                By registering, you agree to our Terms of Use and to receive Alumates emails & updates and acknowledge that you read our Privacy Policy.
-            </div> -->
+
         </div>
 
 
@@ -136,27 +137,27 @@
 
 
     <script src="/js/app.js"></script>
-    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+    <!-- <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script> -->
     <script>
-        function onSuccess(googleUser) {
-            console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-        }
+        // function onSuccess(googleUser) {
+        //     console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+        // }
 
-        function onFailure(error) {
-            console.log(error);
-        }
+        // function onFailure(error) {
+        //     console.log(error);
+        // }
 
-        function renderButton() {
-            gapi.signin2.render('my-signin2', {
-                'scope': 'profile email',
-                'width': 530,
-                'height': 60,
-                'longtitle': true,
-                'theme': 'dark',
-                'onsuccess': onSuccess,
-                'onfailure': onFailure
-            });
-        }
+        // function renderButton() {
+        //     gapi.signin2.render('my-signin2', {
+        //         'scope': 'profile email',
+        //         'width': 530,
+        //         'height': 60,
+        //         'longtitle': true,
+        //         'theme': 'dark',
+        //         'onsuccess': onSuccess,
+        //         'onfailure': onFailure
+        //     });
+        // }
     </script>
 </body>
 
