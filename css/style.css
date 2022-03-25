@@ -3682,6 +3682,10 @@ p {
     padding: 30px 40px;
 }
 
+#my-signin2 {
+    width: 100% !important;
+}
+
 .signUp-2>div {
     height: 68px;
     margin: 10px 0px;
