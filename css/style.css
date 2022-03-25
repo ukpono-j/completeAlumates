@@ -3622,6 +3622,12 @@ p {
     width: 100%;
     padding-top: 50px;
     height: 100px;
+    text-align: center;
+    font-family: "Poppins";
+}
+
+.signUp-title h1 {
+    font-size: 30px;
 }
 
 .signUp-form-container {
@@ -3635,11 +3641,6 @@ p {
 .signUp-form-container>div {
     width: 100%;
     height: auto;
-}
-
-.signUp-title {
-    text-align: center;
-    font-family: "Poppins";
 }
 
 .signUp-title a {
@@ -3681,11 +3682,6 @@ p {
 .signUp-2 {
     padding: 30px 40px;
 }
-
-
-/* #my-signin2 {
-    width: 100% !important;
-} */
 
 .signUp-2>div {
     height: 68px;
@@ -3866,6 +3862,9 @@ p {
     }
     .signUp-foot {
         padding: 80px 20px;
+    }
+    .signUp-title h1 {
+        font-size: 30px;
     }
 }
 
