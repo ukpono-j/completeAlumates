@@ -2145,8 +2145,8 @@ p {
 @media screen and (max-width: 789px) {
     .gen-mark {
         display: flex;
-        justify-content: center;
-        /* align-items: center;  */
+        justify-content: space-between;
+        align-items: center;
     }
     .view-cv2-title {
         display: none;
@@ -2501,7 +2501,7 @@ p {
     background-size: cover;
     background-repeat: no-repeat;
     border: 1px solid #000;
-    padding: 50px 0px;
+    padding: 130px 0px !important;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -2533,6 +2533,15 @@ p {
     padding: 0px 10px;
     border-radius: 10px;
     margin-top: 40px;
+}
+
+.grad-year ::placeholder {
+    color: #eee;
+    font-size: 14px;
+}
+
+.grad-year input {
+    width: 100%;
 }
 
 .get-into-network-container input {
@@ -2593,7 +2602,7 @@ p {
         line-height: 28px;
     }
     .get-into-network {
-        padding: 130px 30px;
+        padding: 130px 20px !important;
     }
     .get-into-network-container h5 {
         color: white;
@@ -3999,7 +4008,7 @@ p {
 .alig h1 {
     text-align: center;
     font-family: "Poppins";
-    padding-top: 70px;
+    padding-top: 100px;
     font-size: 20px;
     line-height: 21px;
     padding-bottom: 12px;
@@ -4035,9 +4044,9 @@ p {
 }
 
 .invited-friend {
-    height: 90px;
+    height: auto;
     width: 100%;
-    /* border: 1px solid #fff; */
+    border: 1px solid transparent;
 }
 
 .invite-code {
@@ -4120,6 +4129,7 @@ p {
 .invited-friend-2 {
     display: flex;
     align-items: center;
+    /* border: 1px solid #fff; */
 }
 
 .invited-friend-2>div {
