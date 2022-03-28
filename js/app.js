@@ -30,8 +30,7 @@ $(() => {
             let data = JSON.parse(response)
             console.log(data)
             if (response.id != '') {
-                $("#referred_by").html(response.first_name + ' ' + response.last_name)
-                $("#referred_by").data('id', response.id)
+                $("#referred_by").html(`<p data-id='${response.id}'>${response.first_name} ${response.last_name}</p>`)
             }
         })
     })
