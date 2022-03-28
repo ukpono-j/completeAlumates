@@ -21,6 +21,18 @@ let countryUrl = "https://alumates.herokuapp.com/api/countries",
     data = {}
 
 $(() => {
+    // ============== SEARCH INVITE ==============
+    $("#invite_code_btn").click(function (e) {
+        e.preventDefault()
+        let invite = $("#invite_code").val(),
+            inviteUrl = `https://alumates.herokuapp.com/api/user/invite/${invite}`
+        get(inviteUrl).done((response)=>{
+            let data = JSON.parse(response)
+            console.log(data)
+            $("#referred_by").html(data.first_name + ' ' + data.last_name)
+        })
+    })
+
     // ============== SEARCH SCHOOLMATES ==============
     $("#search_schoolmates_btn").click(function (e) {
         e.preventDefault()
