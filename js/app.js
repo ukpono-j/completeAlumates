@@ -29,9 +29,9 @@ $(() => {
         get(inviteUrl).done((response) => {
             let data = JSON.parse(response)
             console.log(data)
-            if (data.id != '') {
-                $("#referred_by").html(data.first_name + ' ' + data.last_name)
-                $("#referred_by").data('id', data.id)
+            if (response.id != '') {
+                $("#referred_by").html(response.first_name + ' ' + response.last_name)
+                $("#referred_by").data('id', response.id)
             }
         })
     })
