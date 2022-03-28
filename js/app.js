@@ -162,30 +162,32 @@ $(() => {
         // ======================= CITY ===================
         $("#state").change(function () {
             stateId = $("#state option:selected").data('id'),
-            cityUrl = `https://alumates.herokuapp.com/api/${stateId}/cities`;
+                cityUrl = `https://alumates.herokuapp.com/api/${stateId}/cities`;
             get(cityUrl).done(function (response) {
-                $("#state").html('')
-                states = JSON.parse(response)
-                $.map(states, function (index) {
-                    $("#state").append(`<option data-id="${index.id}"  value="${index.name}">${index.name}</option>`)
+                $("#city").html('')
+                cities = JSON.parse(response)
+                $.map(cities, function (index) {
+                    $("#city").append(`<option data-id="${index.id}"  value="${index.name}">${index.name}</option>`)
                 })
             })
         });
-        // ======================= ADD SCHOOL ===================
 
-
-        // let schoolTypeId, schoolName, cityName
         // ============== ALUMNI ==============
-        $("#add_alumni_btn").click(function (e) {
+        $("#join_alumni").click(function (e) {
             e.preventDefault()
-            let school_id = $("#school").val(),
+            let school_id = $("#schools").val(),
+                graduation_year = $("#graduation_year").val(),
                 alumniUrl = `https://alumates.herokuapp.com/api/user/search/${mate}`,
                 data = {
-                    school_id: school_id
+                    school_id: school_id,
+                    graduation_year: graduation_year
                 }
-            postRequest(alumniUrl, data)
+            console.log(data)
+            // post(alumniUrl, data)
         })
 
+
+        // ======================= ADD SCHOOL ===================
         // ============== NO SCHOOL ==============
         $("#add_alumni_btn").click(function (e) {
             e.preventDefault()
