@@ -27,10 +27,12 @@ $(() => {
         let invite = $("#invite_code").val(),
             inviteUrl = `https://alumates.herokuapp.com/api/user/invite/${invite}`
         get(inviteUrl).done((response) => {
-            let data = JSON.parse(response)
-            console.log(data)
-            if (response.id != '') {
-                $("#referred_by").html(`<p data-id='${response.id}'>${response.first_name} ${response.last_name}</p>`)
+            let ref = JSON.parse(response)
+            console.log(ref[0])
+            if (ref[0].id != '') {
+                $("#referred_by").html(`<p data-id='${ref[0].id}'>${ref[0].first_name} ${ref[0].last_name}</p>`)
+            } else {
+                $("#referred_by").html(`<p>incorrect invite code</p>`)
             }
         })
     })
