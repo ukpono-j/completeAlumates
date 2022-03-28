@@ -177,7 +177,7 @@ $(() => {
             e.preventDefault()
             let school_id = $("#schools").val(),
                 graduation_year = $("#graduation_year").val(),
-                alumniUrl = `https://alumates.herokuapp.com/api/user/search/${mate}`,
+                alumniUrl = `https://alumates.herokuapp.com/api/alumni`,
                 data = {
                     school_id: school_id,
                     graduation_year: graduation_year
