@@ -17,40 +17,103 @@ function closeMenu() {
     navMenu.classList.remove("active");
 }
 
-
-
-
-
 let countryUrl = "https://alumates.herokuapp.com/api/countries",
     data = {}
 
-
 $(() => {
-
-    function getRequest(url) {
-        $.ajax({
-            url: url,
-
-        }).done(function(response) {
-            return response
+    // ============== SEARCH SCHOOLMATES ==============
+    $("#search_schoolmates_btn").click(function (e) {
+        e.preventDefault()
+        let mate = $("#search_schoolmates").val(), searchUrl = `https://alumates.herokuapp.com/api/user/search/${mate}`
+        getRequest(searchUrl).done(function (response) {
+            console.log(response)
+            let data = JSON.parse(response), schoolmates = ''
+            $.map(data, function (index) {
+                schoolmates_html = `<div class="deep-search-content-bx1">
+                    <div class="deep-search-main-content">
+                        <div class="deep-search-main-content-img">
+                            <img src="./images/bg/${index.image}" alt="profile image">
+                        </div>
+                        <div class="deep-search-main-content-3">
+                            <div class="deep-search-main-content-3-title">
+                                <h3>${index.name}</h3>
+                                <h6>${index.username}</h6>
+                            </div>
+                            <div class="deep-search-main-content-3-subtitle">
+                                <code>coming soon<code>
+                            </div>
+                            <div class="deep-search-main-content-3-mini">
+                                <div style="display: flex; align-items: center;">
+                                    <input type="checkbox">
+                                    <p style="padding-left: 10px;"> ${index.school}
+                                        <span>class of ${index.graduation_year}</span>
+                                    </p>
+                                </div>
+                                <div style="display: flex; align-items: center;">
+                                    <input type="checkbox">
+                                    <p style="padding-left: 10px;"> ${index.school}
+                                        <span>${index.graduation_year} ${index.school_type == 'university' ? '- ' + index.program : ''}</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="deep-search-content-contact"
+                        style="display: flex; justify-content: space-between; align-items: center;">
+                        <div class="deep-search-content-contact-btn1">
+                            <a href="https://play.google.com/store/apps/details?id=com.dreamlabs.alumates">Contact</a>
+                        </div>
+                        <div class="deep-search-content-contact-5">
+                            <div>
+                                <img src="./images/icons/location1.png">
+                            </div>
+                            <div>
+                                ${city}, ${country}
+                            </div>
+                        </div>
+                    </div>
+                </div>`
+            })
+            $("#schoolmates_response").append(schoolmates)
         })
-    }
+    })
 
-    function postRequest(url, data) {
-        $.ajax({
-            method: "POST",
-            url: url,
-            data: data,
-        }).done(function(response) { return response })
-    }
+    // ============== ALUMNI ==============
+    $("#add_alumni_btn").click(function (e) {
+        e.preventDefault()
+        let school_id = $("#school").val(),
+            alumniUrl = `https://alumates.herokuapp.com/api/user/search/${mate}`,
+            data = {
+                school_id: school_id
+            }
+        postRequest(alumniUrl, data)
+    })
 
+    // ============== NO SCHOOL ==============
+    $("#add_alumni_btn").click(function (e) {
+        e.preventDefault()
+        let school_id = $("#school").val(), city_id = $("#city").val(),
+            schoolUrl = `https://alumates.herokuapp.com/api/user/search/${mate}`,
+            data = {
+                school_id: school_id
+            }
+        postRequest(alumniUrl, data)
+    })
 
-
-
-
+    // ============== NO CITY ==============
+    $("#add_alumni_btn").click(function (e) {
+        e.preventDefault()
+        let name = $("#city").val(), state_id = $("#state").val(),
+            cityUrl = `https://alumates.herokuapp.com/api/city/${name}`,
+            data = {
+                name: name,
+                state_id: state_id
+            }
+        postRequest(cityUrl, data)
+    })
     $('.portal_employer').hide();
 
-    $('.employee__button').click(function(e) {
+    $('.employee__button').click(function (e) {
         e.preventDefault();
         $(this).addClass('active');
         $('.employer__button').removeClass('active');
@@ -59,7 +122,7 @@ $(() => {
         $('#edit-email').focus(); //Should appear after $('.portal_employee').show(); because if it's before that, the register form doesn't exist in the DOM
     });
 
-    $('.employer__button').click(function(e) {
+    $('.employer__button').click(function (e) {
         e.preventDefault();
         $(this).addClass('active');
         $('.employee__button').removeClass('active');
@@ -75,7 +138,7 @@ $(() => {
         // countryUrl = "https://alumates.herokuapp.com/api/countries",
         stateUrl = "https://alumates.herokuapp.com/api/{country_id}/state",
         schooltypeUrl = "https://alumates.herokuapp.com/api/school_types"
-        // ==================End of  api init ==================
+    // ==================End of  api init ==================
 
 
     registerData = { first_name: "ukpono", last_name: "Akpan", email: "ukponoakpan270@gmail.com", phone_number: "08163423850", password: "stiles12" },
@@ -88,55 +151,55 @@ $(() => {
     })
 
     $("#signIn").click((e) => {
-        // e.preventDefault()   
+        // e.preventDefault()
         postRequest(loginUrl, loginData)
     })
 
     // ============================ COUNTRY ==============
     function delay(callback, ms) {
         var timer = 0;
-        return function() {
+        return function () {
             var context = this,
                 ffd
             args = arguments;
             clearTimeout(timer);
-            timer = setTimeout(function() {
+            timer = setTimeout(function () {
                 callback.apply(context, args);
             }, ms || 0);
         };
     }
 
     const schoolTypeUrl = 'https://alumates.herokuapp.com/api/school_types'
-    get(schoolTypeUrl).done(function(response) {
+    get(schoolTypeUrl).done(function (response) {
         schoolType = JSON.parse(response)
-        $.map(schoolType, function(index) {
+        $.map(schoolType, function (index) {
             $("#selectSchool").append(`<option data-id='${index.id}' value="${index.name}">${index.name}</option>`)
         })
     })
 
-    $("#selectSchool").change(function() {
+    $("#selectSchool").change(function () {
         let schoolType = $("#selectSchool option:selected").val(),
             schoolTypeId = $("#selectSchool option:selected").data('id')
     });
 
     const countryNameUrl = `https://alumates.herokuapp.com/api/countries`;
-    get(countryNameUrl).done(function(response) {
+    get(countryNameUrl).done(function (response) {
         data = JSON.parse(response)
-        $.map(data, function(index) {
+        $.map(data, function (index) {
             $("#country").append(`<option data-id="${index.id}"  value="${index.name}">${index.name}</option>`)
         })
     })
 
     // ======================= STATE ===================
-    $("#country").change(function() {
+    $("#country").change(function () {
         let countryName = $("#country option:selected").val(),
             countryId = $("#country option:selected").data('id'),
 
             stateNameUrl = `https://alumates.herokuapp.com/api/${countryId}/states`;
         // console.log(stateNameUrl)
-        get(stateNameUrl).done(function(response) {
+        get(stateNameUrl).done(function (response) {
             states = JSON.parse(response)
-            $.map(states, function(index) {
+            $.map(states, function (index) {
                 $("#state").append(`<option data-id="${index.id}"  value="${index.name}">${index.name}</option>`)
             })
         })
@@ -146,15 +209,15 @@ $(() => {
 
 
     // ======================= SCHOOLS ===================
-    $("#state").change(function() {
+    $("#state").change(function () {
         let stateName = $("#state option:selected").val(),
             schoolTypeId = $("#selectSchool option:selected").data('id')
         stateId = $("#state option:selected").data('id'),
             schoolsUrl = `https://alumates.herokuapp.com/api/${stateId}/cities/schools/${schoolTypeId}`;
 
-        get(schoolsUrl).done(function(response) {
+        get(schoolsUrl).done(function (response) {
             data = JSON.parse(response)
-            $.map(data, function(index) {
+            $.map(data, function (index) {
                 $("#schools").append(`<option data-id="${index.id}"  value="${index.name}">${index.name}</option>`)
             })
         })
@@ -174,8 +237,8 @@ $(() => {
 
 
     // ======================================== THE NEXT API BTN ============================
-    $(document).ready(function() {
-        $("#Save").click(function() {
+    $(document).ready(function () {
+        $("#Save").click(function () {
             var newUser = new Object();
             newUser.schoolTypes = $("#selectSchool").val()
             newUser.country = $("#country").val()
@@ -185,10 +248,10 @@ $(() => {
                 type: "Post",
                 dataType: json,
                 data: newUser,
-                success: function(data, textStatus, xhr) {
+                success: function (data, textStatus, xhr) {
                     console.log(data)
                 },
-                error: function(xhr, textStatus, errorThrown) {
+                error: function (xhr, textStatus, errorThrown) {
                     console.log("Error in Operation..")
                 }
             })
@@ -200,7 +263,7 @@ $(() => {
 
 
 
-    $('.school').click(function() {
+    $('.school').click(function () {
         var selectedSchool = $(this).find('option:selected').val(); //Select the school code which is stored as value for option
         $.ajax({
             url: 'https://alumates.herokuapp.com/api/schools', //Write a function in the server side which accepts school code as argument
@@ -208,12 +271,12 @@ $(() => {
             dataType: 'json', //return type from server side function [return it as JSON object]
             contentType: "application/json",
             data: JSON.stringify(selectedSchool), //Pass the data to the function on server side
-            success: function(data) { //Array of data returned from server side function
-                $.each(data, function(value) {
+            success: function (data) { //Array of data returned from server side function
+                $.each(data, function (value) {
                     $('.course').append('<option>' + value + '</option>');
                 });
             },
-            error: function(data) {
+            error: function (data) {
                 //display any unhandled error
             }
         });
@@ -238,7 +301,7 @@ function onSignIn(googleUser) {
         email: profile.getEmail()
     }
 
-    post(registerUrl, registrationDetails).done(function(response) {
+    post(registerUrl, registrationDetails).done(function (response) {
         data = JSON.parse(response)
         console.log(data)
     })
@@ -256,7 +319,7 @@ function onSignIn(googleUser) {
 
 function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function() {
+    auth2.signOut().then(function () {
         console.log('User signed out.');
     });
 }
