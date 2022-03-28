@@ -175,7 +175,7 @@ $(() => {
         // ============== ALUMNI ==============
         $("#join_alumni").click(function (e) {
             e.preventDefault()
-            let school_id = $("#schools").val(),
+            let school_id = $("#schools option:selected").data('id'),
                 graduation_year = $("#graduation_year").val(),
                 alumniUrl = `https://alumates.herokuapp.com/api/alumni`,
                 data = {
