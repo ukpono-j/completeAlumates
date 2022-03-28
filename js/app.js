@@ -17,26 +17,7 @@ function closeMenu() {
     navMenu.classList.remove("active");
 }
 
-let countryUrl = "https://alumates.herokuapp.com/api/countries",
-    data = {}
-
 $(() => {
-    // ============== SEARCH INVITE ==============
-    $("#invite_code_btn").click(function (e) {
-        e.preventDefault()
-        let invite = $("#invite_code").val(),
-            inviteUrl = `https://alumates.herokuapp.com/api/user/invite/${invite}`
-        get(inviteUrl).done((response) => {
-            let ref = JSON.parse(response)
-            console.log(ref[0])
-            if (ref[0].id != '') {
-                $("#referred_by").html(`<p data-id='${ref[0].id}'>${ref[0].first_name} ${ref[0].last_name}</p>`)
-            } else {
-                $("#referred_by").html(`<p>incorrect invite code</p>`)
-            }
-        })
-    })
-
     // ============== SEARCH SCHOOLMATES ==============
     $("#search_schoolmates_btn").click(function (e) {
         e.preventDefault()
@@ -94,100 +75,27 @@ $(() => {
         })
     })
 
-    // ============== ALUMNI ==============
-    $("#add_alumni_btn").click(function (e) {
+    // ============== SEARCH INVITE ==============
+    $("#invite_code_btn").click(function (e) {
         e.preventDefault()
-        let school_id = $("#school").val(),
-            alumniUrl = `https://alumates.herokuapp.com/api/user/search/${mate}`,
-            data = {
-                school_id: school_id
+        let invite = $("#invite_code").val(),
+            inviteUrl = `https://alumates.herokuapp.com/api/user/invite/${invite}`
+        get(inviteUrl).done((response) => {
+            let ref = JSON.parse(response)
+            console.log(ref[0])
+            if (ref[0].id != '') {
+                $("#referred_by").html(`<p data-id='${ref[0].id}'>${ref[0].first_name} ${ref[0].last_name}</p>`)
+            } else {
+                $("#referred_by").html(`<p>incorrect invite code</p>`)
             }
-        postRequest(alumniUrl, data)
+        })
     })
 
-    // ============== NO SCHOOL ==============
-    $("#add_alumni_btn").click(function (e) {
-        e.preventDefault()
-        let school_id = $("#school").val(), city_id = $("#city").val(),
-            schoolUrl = `https://alumates.herokuapp.com/api/user/search/${mate}`,
-            data = {
-                school_id: school_id
-            }
-        postRequest(alumniUrl, data)
-    })
-
-    // ============== NO CITY ==============
-    $("#add_alumni_btn").click(function (e) {
-        e.preventDefault()
-        let name = $("#city").val(), state_id = $("#state").val(),
-            cityUrl = `https://alumates.herokuapp.com/api/city/${name}`,
-            data = {
-                name: name,
-                state_id: state_id
-            }
-        postRequest(cityUrl, data)
-    })
-    $('.portal_employer').hide();
-
-    $('.employee__button').click(function (e) {
-        e.preventDefault();
-        $(this).addClass('active');
-        $('.employer__button').removeClass('active');
-        $('.portal_employee').show();
-        $('.portal_employer').hide();
-        $('#edit-email').focus(); //Should appear after $('.portal_employee').show(); because if it's before that, the register form doesn't exist in the DOM
-    });
-
-    $('.employer__button').click(function (e) {
-        e.preventDefault();
-        $(this).addClass('active');
-        $('.employee__button').removeClass('active');
-        $('.portal_employer').show();
-        $('.portal_employee').hide();
-        $('#edit-firstname').focus(); //Should appear after $('.portal_employer').show(); because if it's before that, the register form doesn't exist in the DOM
-    });
-
-
-    // ================== API INIT ==================
-    let registerUrl = "https://alumates.herokuapp.com/api/register",
-        loginUrl = "https://alumates.herokuapp.com/api/login",
-        // countryUrl = "https://alumates.herokuapp.com/api/countries",
-        stateUrl = "https://alumates.herokuapp.com/api/{country_id}/state",
-        schooltypeUrl = "https://alumates.herokuapp.com/api/school_types"
-    // ==================End of  api init ==================
-
-
-    registerData = { first_name: "ukpono", last_name: "Akpan", email: "ukponoakpan270@gmail.com", phone_number: "08163423850", password: "stiles12" },
-        loginData = { email: "ukponoakpan270@gmail.com", password: "stiles12" }
-
-    $("#signUp1").click((e) => {
-
-        e.preventDefault()
-        postRequest(registerUrl, registerData)
-    })
-
-    $("#signIn").click((e) => {
-        // e.preventDefault()
-        postRequest(loginUrl, loginData)
-    })
-
-    // ============================ COUNTRY ==============
-    function delay(callback, ms) {
-        var timer = 0;
-        return function () {
-            var context = this,
-                ffd
-            args = arguments;
-            clearTimeout(timer);
-            timer = setTimeout(function () {
-                callback.apply(context, args);
-            }, ms || 0);
-        };
-    }
-
+    // ============== SCHOOL TYPE ==============
     const schoolTypeUrl = 'https://alumates.herokuapp.com/api/school_types'
     get(schoolTypeUrl).done(function (response) {
         schoolType = JSON.parse(response)
+        $("#selectSchool").html('')
         $.map(schoolType, function (index) {
             $("#selectSchool").append(`<option data-id='${index.id}' value="${index.name}">${index.name}</option>`)
         })
@@ -198,22 +106,22 @@ $(() => {
             schoolTypeId = $("#selectSchool option:selected").data('id')
     });
 
-    const countryNameUrl = `https://alumates.herokuapp.com/api/countries`;
+    // ============== COUNTRY ==============
+    const countryNameUrl = `https://alumates.herokuapp.com/api/countries`
     get(countryNameUrl).done(function (response) {
         data = JSON.parse(response)
+        $("#country").html('')
         $.map(data, function (index) {
             $("#country").append(`<option data-id="${index.id}"  value="${index.name}">${index.name}</option>`)
         })
     })
 
-    // ======================= STATE ===================
+    // ============== STATE ==============
     $("#country").change(function () {
-        let countryName = $("#country option:selected").val(),
-            countryId = $("#country option:selected").data('id'),
-
+        let countryId = $("#country option:selected").data('id'),
             stateNameUrl = `https://alumates.herokuapp.com/api/${countryId}/states`;
-        // console.log(stateNameUrl)
         get(stateNameUrl).done(function (response) {
+            $("#state").html('')
             states = JSON.parse(response)
             $.map(states, function (index) {
                 $("#state").append(`<option data-id="${index.id}"  value="${index.name}">${index.name}</option>`)
@@ -221,63 +129,113 @@ $(() => {
         })
     });
 
-    // ======================= CITIES ===================
-
-
     // ======================= SCHOOLS ===================
     $("#state").change(function () {
-        let stateName = $("#state option:selected").val(),
-            schoolTypeId = $("#selectSchool option:selected").data('id')
-        stateId = $("#state option:selected").data('id'),
+        let schoolTypeId = $("#selectSchool option:selected").data('id'),
+            stateId = $("#state option:selected").data('id'),
             schoolsUrl = `https://alumates.herokuapp.com/api/${stateId}/cities/schools/${schoolTypeId}`;
 
         get(schoolsUrl).done(function (response) {
+            $("#schools").html('')
             data = JSON.parse(response)
-            $.map(data, function (index) {
-                $("#schools").append(`<option data-id="${index.id}"  value="${index.name}">${index.name}</option>`)
+            if (data.message == 'School not found') {
+                $("#schools").html('<button id="sch_not_found_btn">Please Add your School</button>')
+            } else {
+                $.map(data, function (index) {
+                    $("#schools").append(`<option data-id="${index.id}"  value="${index.name}">${index.name}</option>`)
+                })
+            }
+        })
+
+        // ============== NO CITY ==============
+        $("#add_alumni_btn").click(function (e) {
+            e.preventDefault()
+            let name = $("#city").val(), state_id = $("#state").val(),
+                cityUrl = `https://alumates.herokuapp.com/api/city/${name}`,
+                data = {
+                    name: name,
+                    state_id: state_id
+                }
+            postRequest(cityUrl, data)
+        })
+
+        // ======================= CITY ===================
+        $("#state").change(function () {
+            stateId = $("#state option:selected").data('id'),
+            cityUrl = `https://alumates.herokuapp.com/api/${stateId}/cities`;
+            get(cityUrl).done(function (response) {
+                $("#state").html('')
+                states = JSON.parse(response)
+                $.map(states, function (index) {
+                    $("#state").append(`<option data-id="${index.id}"  value="${index.name}">${index.name}</option>`)
+                })
             })
+        });
+        // ======================= ADD SCHOOL ===================
+
+
+        // let schoolTypeId, schoolName, cityName
+        // ============== ALUMNI ==============
+        $("#add_alumni_btn").click(function (e) {
+            e.preventDefault()
+            let school_id = $("#school").val(),
+                alumniUrl = `https://alumates.herokuapp.com/api/user/search/${mate}`,
+                data = {
+                    school_id: school_id
+                }
+            postRequest(alumniUrl, data)
+        })
+
+        // ============== NO SCHOOL ==============
+        $("#add_alumni_btn").click(function (e) {
+            e.preventDefault()
+            let school_id = $("#school").val(), city_id = $("#city").val(),
+                schoolUrl = `https://alumates.herokuapp.com/api/user/search/${mate}`,
+                data = {
+                    school_id: school_id
+                }
+            postRequest(alumniUrl, data)
+        })
+        $('.portal_employer').hide();
+
+        $('.employee__button').click(function (e) {
+            e.preventDefault();
+            $(this).addClass('active');
+            $('.employer__button').removeClass('active');
+            $('.portal_employee').show();
+            $('.portal_employer').hide();
+            $('#edit-email').focus(); //Should appear after $('.portal_employee').show(); because if it's before that, the register form doesn't exist in the DOM
+        });
+
+        $('.employer__button').click(function (e) {
+            e.preventDefault();
+            $(this).addClass('active');
+            $('.employee__button').removeClass('active');
+            $('.portal_employer').show();
+            $('.portal_employee').hide();
+            $('#edit-firstname').focus(); //Should appear after $('.portal_employer').show(); because if it's before that, the register form doesn't exist in the DOM
+        });
+
+
+        // ================== API INIT ==================
+        let registerUrl = "https://alumates.herokuapp.com/api/register",
+            loginUrl = "https://alumates.herokuapp.com/api/login"
+        // ==================End of  api init ==================
+
+
+        registerData = { first_name: "ukpono", last_name: "Akpan", email: "ukponoakpan270@gmail.com", phone_number: "08163423850", password: "stiles12" },
+            loginData = { email: "ukponoakpan270@gmail.com", password: "stiles12" }
+
+        $("#signUp1").click((e) => {
+            e.preventDefault()
+            post(registerUrl, registerData)
+        })
+
+        $("#signIn").click((e) => {
+            e.preventDefault()
+            post(loginUrl, loginData)
         })
     });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // ======================================== THE NEXT API BTN ============================
-    $(document).ready(function () {
-        $("#Save").click(function () {
-            var newUser = new Object();
-            newUser.schoolTypes = $("#selectSchool").val()
-            newUser.country = $("#country").val()
-            $.ajax({
-                url: "https://alumates.herokuapp.com/api/alumnis",
-
-                type: "Post",
-                dataType: json,
-                data: newUser,
-                success: function (data, textStatus, xhr) {
-                    console.log(data)
-                },
-                error: function (xhr, textStatus, errorThrown) {
-                    console.log("Error in Operation..")
-                }
-            })
-        })
-    })
-
-
-
-
-
 
     $('.school').click(function () {
         var selectedSchool = $(this).find('option:selected').val(); //Select the school code which is stored as value for option
@@ -318,24 +276,14 @@ function onSignIn(googleUser) {
     }
 
     post(registerUrl, registrationDetails).done(function (response) {
-        data = JSON.parse(response)
-        console.log(data)
+        // data = JSON.parse(response)
+        // create a session to log user into and save their sate
     })
-
-
-
-
-    // console.log('ID: ' + profile.getAuthResponse().id_token);
-    // console.log('Name: ' + profile.getName());
-    // console.log('Name: ' + profile.getGivenName());
-    // console.log('Name: ' + profile.getFamilyName());
-    // console.log('Image URL: ' + profile.getImageUrl());
-    // console.log('Email: ' + profile.getEmail());
 }
 
 function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
-        console.log('User signed out.');
+        // console.log('User signed out.');
     });
 }
