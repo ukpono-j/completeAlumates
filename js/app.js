@@ -68,6 +68,7 @@ function onSignIn(googleUser) {
 }
 
 function display() {
+
     console.log(registerData)
     console.log(getCookie('first_name'))
     console.log(getCookie('last_name'))
