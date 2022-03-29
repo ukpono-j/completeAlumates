@@ -62,6 +62,8 @@ function onSignIn(googleUser) {
     setCookie('last_name', profile.getFamilyName(), 1)
     setCookie('email', profile.getEmail(), 1)
 
+    display()
+
     return registerData
 }
 
