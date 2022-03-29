@@ -98,9 +98,9 @@ function signOut() {
 
 $(() => {
 
-    $("#login").data('onsuccess').click(function (e, googleUser) {
+    $("#login").click(function (e) {
         e.preventDefault()
-        onSignIn
+        onSignIn()
     })
 
     $("#logout").click(function (e) {
