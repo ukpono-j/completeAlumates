@@ -99,22 +99,21 @@ let token = getCookie("access_token"),
 $(() => {
     $("#login").click(function (e, googleUser) {
         e.preventDefault()
-        let profile = googleUser.getBasicProfile(),
-            registerUrl = 'https://alumates.herokuapp.com/api/register',
-            loginUrl = 'https://alumates.herokuapp.com/api/login',
-            id_token = googleUser.getAuthResponse().id_token,
-            registrationData = {
-                first_name: profile.getGivenName(),
-                last_name: profile.getFamilyName(),
-                email: profile.getEmail()
-                // image_url: profile.getImageUrl(),
-            },
-            loginData = {
-                email: profile.getEmail()
-            }
-        console.log("ID Token: " + id_token)
-
         if (!token) {
+            let profile = googleUser.getBasicProfile(),
+                registerUrl = 'https://alumates.herokuapp.com/api/register',
+                loginUrl = 'https://alumates.herokuapp.com/api/login',
+                id_token = googleUser.getAuthResponse().id_token,
+                registrationData = {
+                    first_name: profile.getGivenName(),
+                    last_name: profile.getFamilyName(),
+                    email: profile.getEmail()
+                    // image_url: profile.getImageUrl(),
+                },
+                loginData = {
+                    email: profile.getEmail()
+                }
+            console.log("ID Token: " + id_token)
             post(loginUrl, loginData).done(function (response) {
                 dataL = JSON.parse(response)
                 if (dataL.message == 'Invalid login details') {
