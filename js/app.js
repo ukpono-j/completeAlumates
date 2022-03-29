@@ -62,14 +62,13 @@ function onSignIn(googleUser) {
         loginData = {
             email: profile.getEmail()
         }
-    console.log(profile)
-    console.log(id_token)
-    console.log(registrationData)
+
     setCookie('access_token', id_token, 1)
     setCookie('user_email', profile.getEmail(), 1)
-
+    token = getCookie("access_token")
+    user_email = getCookie("user_email")
     console.log('token: ' + token)
-    console.log('id: ' + id)
+    console.log('user_email: ' + user_email)
 
     // post(registerUrl, registrationData).done(function (response) {
     //     let dataR = JSON.parse(response)
@@ -96,10 +95,14 @@ function onSignIn(googleUser) {
 function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
-        // console.log('User signed out.');
         // remove cookie
         setCookie("access_token", '', -1)
-        setCookie("user_id", '', -1)
+        setCookie("user_email", '', -1)
+        token = getCookie("access_token")
+        user_email = getCookie("user_email")
+        console.log('token: ' + token)
+        console.log('user_email: ' + user_email)
+        console.log('User signed out.')
     });
 }
 
