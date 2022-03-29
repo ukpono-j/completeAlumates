@@ -116,11 +116,13 @@ $(() => {
             console.log("ID Token: " + id_token)
             post(loginUrl, loginData).done(function (response) {
                 dataL = JSON.parse(response)
+                console.log(dataL)
                 if (dataL.message == 'Invalid login details') {
                     // user not in database
                     // register user as data is coming from google server
                     post(registerUrl, registrationData).done(function (response) {
                         dataR = JSON.parse(response)
+                        console.log(dataR)
                         // create a session to log user into and save their sate
                         setCookie(access_token, dataR.access_token, 1)
                         setCookie(id, dataR.user.id, 1)
