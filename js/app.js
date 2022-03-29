@@ -60,21 +60,37 @@ function onSignIn(googleUser) {
             // image_url: profile.getImageUrl(),
         },
         loginData = {
-            email: profile.getEmail()
+            email: profile.getEmail(),
+            password: 'password'
         }
 
     setCookie('access_token', id_token, 1)
     setCookie('user_email', profile.getEmail(), 1)
-    token = getCookie("access_token")
-    user_email = getCookie("user_email")
-    console.log('token: ' + token)
-    console.log('user_email: ' + user_email)
+    // token = getCookie("access_token")
+    // user_email = getCookie("user_email")
+    // console.log('token: ' + token)
+    // console.log('user_email: ' + user_email)
+    post(registerUrl, registrationData).done(function (response) {
+        let dataR = JSON.parse(response)
+        console.log('dataR: ' + dataR)
+        if (dataR.message == 'The email has already been taken.') {
+            console.log('log user in instead')
+        } else {
+            console.log(dataR)
+            // create a session to log user into and save their sate
+        }
+    })
 
-    // post(registerUrl, registrationData).done(function (response) {
-    //     let dataR = JSON.parse(response)
-    //     console.log('dataR: ' + dataR)
-    //     // create a session to log user into and save their sate
-    // })
+    post(loginUrl, loginData).done(function (response) {
+        let dataL = JSON.parse(response)
+        console.log('dataR: ' + dataL)
+        if (dataR.message == 'Invalid login details') {
+            console.log('user details incorrect')
+        } else {
+            console.log(dataL)
+            // create a session to log user into and save their sate
+        }
+    })
 
     // if (!token) {
     //     post(loginUrl, loginData).done(function (response) {
@@ -98,13 +114,16 @@ function signOut() {
         // remove cookie
         setCookie("access_token", '', -1)
         setCookie("user_email", '', -1)
-        token = getCookie("access_token")
-        user_email = getCookie("user_email")
-        console.log('token: ' + token)
-        console.log('user_email: ' + user_email)
-        console.log('User signed out.')
+        // token = getCookie("access_token")
+        // user_email = getCookie("user_email")
+        // console.log('token: ' + token)
+        // console.log('user_email: ' + user_email)
+        // console.log('User signed out.')
     });
 }
+
+// get user id using their email
+// add user to alumni
 
 $(() => {
     // ============== SEARCH SCHOOLMATES ==============
