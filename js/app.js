@@ -75,21 +75,22 @@ function onSignIn(googleUser) {
         console.log('dataR: ' + dataR)
         if (dataR.message == 'The email has already been taken.') {
             console.log('log user in instead')
-            // post(loginUrl, loginData).done(function (response) {
-            //     let dataL = JSON.parse(response)
-            //     console.log('dataR: ' + dataL)
-            //     if (dataR.message == 'Invalid login details') {
-            //         console.log('user details incorrect')
-            //     } else {
-            //         console.log(dataL)
-            //         // create a session to log user into and save their sate
-            //     }
-            // })
         } else {
             console.log(dataR)
             // create a session to log user into and save their sate
         }
     })
+
+    // post(loginUrl, loginData).done(function (response) {
+    //     let dataL = JSON.parse(response)
+    //     console.log('dataR: ' + dataL)
+    //     if (dataR.message == 'Invalid login details') {
+    //         console.log('user details incorrect')
+    //     } else {
+    //         console.log(dataL)
+    //         // create a session to log user into and save their sate
+    //     }
+    // })
 
     // if (!token) {
     //     post(loginUrl, loginData).done(function (response) {
