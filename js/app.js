@@ -50,6 +50,20 @@ let token = getCookie("access_token"),
     registrationData = {},
     loginData = {}
 
+function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+        // remove cookie
+        setCookie("access_token", '', -1)
+        setCookie("user_email", '', -1)
+        // token = getCookie("access_token")
+        // user_email = getCookie("user_email")
+        // console.log('token: ' + token)
+        // console.log('user_email: ' + user_email)
+        // console.log('User signed out.')
+    });
+}
+
 function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile(),
         id_token = googleUser.getAuthResponse().id_token,
@@ -112,20 +126,6 @@ console.log(registrationData)
 //         }
 //     })
 // }
-
-function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-        // remove cookie
-        setCookie("access_token", '', -1)
-        setCookie("user_email", '', -1)
-        // token = getCookie("access_token")
-        // user_email = getCookie("user_email")
-        // console.log('token: ' + token)
-        // console.log('user_email: ' + user_email)
-        // console.log('User signed out.')
-    });
-}
 
 // get user id using their email
 // add user to alumni
