@@ -58,9 +58,19 @@ function onSignIn(googleUser) {
     registerData.email = profile.getEmail()
     // registerData.imageUrl = profile.getImageUrl()
 
+    setCookie('first_name', profile.getGivenName(), 1)
+    setCookie('last_name', profile.getFamilyName(), 1)
+    setCookie('email', profile.getEmail(), 1)
+
     return registerData
 }
-console.log(registerData)
+
+function display() {
+    console.log(registerData)
+    console.log(getCookie('first_name'))
+    console.log(getCookie('last_name'))
+    console.log(getCookie('email'))
+}
 
 $("#submit_btn").click((e) => {
     e.preventDefault()
