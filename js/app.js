@@ -45,13 +45,14 @@ function getCookie(name) {
 }
 
 let token = getCookie("access_token"),
+    user_email = getCookie("user_email"),
     id = getCookie("user_id")
 
 function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile(),
+        id_token = googleUser.getAuthResponse().id_token,
         registerUrl = 'https://alumates.herokuapp.com/api/register',
         loginUrl = 'https://alumates.herokuapp.com/api/login',
-        id_token = googleUser.getAuthResponse().id_token,
         registrationData = {
             first_name: profile.getGivenName(),
             last_name: profile.getFamilyName(),
@@ -61,30 +62,35 @@ function onSignIn(googleUser) {
         loginData = {
             email: profile.getEmail()
         }
+    console.log(profile)
+    console.log(id_token)
+    console.log(registrationData)
+    setCookie('access_token', id_token, 1)
+    setCookie('user_email', profile.getEmail(), 1)
 
-    if (!token) {
-        post(loginUrl, loginData).done(function (response) {
-            let dataL = JSON.parse(response)
-            console.log('dataL: ' + dataL)
-            if (dataL.message == 'Invalid login details') {
-                // user not in database
-                // register user as data is coming from google server
-                post(registerUrl, registrationData).done(function (response) {
-                    let dataR = JSON.parse(response)
-                    console.log('dataR: ' + dataR)
-                    // create a session to log user into and save their sate
-                    setCookie('access_token', dataR.access_token, 1)
-                    setCookie('user_id', dataR.user.id, 1)
-                })
-            } else {
-                // create a session to log user into and save their sate
-                setCookie("access_token", '', -1)
-                setCookie("user_id", '', -1)
-            }
-        })
-        console.log(getCookie(access_token));
-        console.log(getCookie(user_id));
-    }
+    console.log('token: ' + token)
+    console.log('id: ' + id)
+
+    // post(registerUrl, registrationData).done(function (response) {
+    //     let dataR = JSON.parse(response)
+    //     console.log('dataR: ' + dataR)
+    //     // create a session to log user into and save their sate
+    // })
+
+    // if (!token) {
+    //     post(loginUrl, loginData).done(function (response) {
+    //         let dataL = JSON.parse(response)
+    //         // console.log('dataL: ' + dataL)
+    //         if (dataL.message == 'Invalid login details') {
+    //             // user not in database
+    //             // register user as data is coming from google server
+    //         } else {
+    //             // create a session to log user into and save their sate
+    //             setCookie("access_token", dataR.access_token, 1)
+    //             setCookie("user_id", dataR.user.id, 1)
+    //         }
+    //     })
+    // }
 }
 
 function signOut() {
@@ -92,22 +98,12 @@ function signOut() {
     auth2.signOut().then(function () {
         // console.log('User signed out.');
         // remove cookie
-        setCookie("access_token", dataR.access_token, -1)
-        setCookie("user_id", dataR.user.id, -1)
+        setCookie("access_token", '', -1)
+        setCookie("user_id", '', -1)
     });
 }
 
 $(() => {
-    $("#login").click(function (e) {
-        e.preventDefault()
-        onSignIn()
-    })
-
-    $("#logout").click(function (e) {
-        e.preventDefault()
-        signOut()
-    })
-
     // ============== SEARCH SCHOOLMATES ==============
     $("#search_schoolmates_btn").click(function (e) {
         e.preventDefault()
