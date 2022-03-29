@@ -17,6 +17,85 @@ function closeMenu() {
     navMenu.classList.remove("active");
 }
 
+function setCookie(name, value, days) {
+    let date, expires;
+    if (days) {
+        date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toGMTString();
+    } else {
+        expires = "";
+    }
+    document.cookie = name + "=" + value + expires + "; path=/";
+}
+
+function getCookie(name) {
+    let i, c, ca, nameEQ = name + "=";
+    ca = document.cookie.split(';');
+    for (i = 0; i < ca.length; i++) {
+        c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1, c.length);
+        }
+        if (c.indexOf(nameEQ) == 0) {
+            return c.substring(nameEQ.length, c.length);
+        }
+    }
+    return '';
+}
+
+let token = getCookie("access_token"),
+    id = getCookie("user_id")
+
+function onSignIn(googleUser) {
+    let profile = googleUser.getBasicProfile(),
+        registerUrl = 'https://alumates.herokuapp.com/api/register',
+        loginUrl = 'https://alumates.herokuapp.com/api/login',
+        id_token = googleUser.getAuthResponse().id_token,
+        registrationData = {
+            first_name: profile.getGivenName(),
+            last_name: profile.getFamilyName(),
+            email: profile.getEmail()
+            // image_url: profile.getImageUrl(),
+        },
+        loginData = {
+            email: profile.getEmail()
+        }
+    console.log("ID Token: " + id_token)
+
+    if (!token) {
+        post(loginUrl, loginData).done(function (response) {
+            dataL = JSON.parse(response)
+            if (dataL.message == 'Invalid login details') {
+                // user not in database
+                // register user as data is coming from google server
+                post(registerUrl, registrationData).done(function (response) {
+                    dataR = JSON.parse(response)
+                    // create a session to log user into and save their sate
+                    setCookie(access_token, dataR.access_token, 1)
+                    setCookie(id, dataR.user.id, 1)
+                })
+            } else {
+                // create a session to log user into and save their sate
+                setCookie("access_token", dataR.access_token, 1)
+                setCookie("user_id", dataR.user.id, 1)
+            }
+        })
+        console.log(getCookie(access_token));
+        console.log(getCookie(user_id));
+    }
+}
+
+function signOut() {
+    let auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+        // console.log('User signed out.');
+        // remove cookie
+        setCookie("access_token", dataR.access_token, -1)
+        setCookie("user_id", dataR.user.id, -1)
+    });
+}
+
 $(() => {
     // ============== SEARCH SCHOOLMATES ==============
     $("#search_schoolmates_btn").click(function (e) {
@@ -75,6 +154,23 @@ $(() => {
         })
     })
 
+
+    $("#alumni").click((e) => {
+        e.preventDefault()
+
+        if (!token) {
+            // cannot continue to join alumni
+            // redirect user to sign in page
+            let err = "You need to be signed in to perform this action"
+            // window.location.href = ""
+        }
+        else {
+            // user is logged in, get email
+            console.log(getCookie(access_token));
+            console.log(getCookie(id));
+        }
+    })
+
     // ============== SEARCH INVITE ==============
     $("#invite_code_btn").click(function (e) {
         e.preventDefault()
@@ -101,11 +197,6 @@ $(() => {
         })
     })
 
-    $("#selectSchool").change(function () {
-        let schoolType = $("#selectSchool option:selected").val(),
-            schoolTypeId = $("#selectSchool option:selected").data('id')
-    });
-
     // ============== COUNTRY ==============
     const countryNameUrl = `https://alumates.herokuapp.com/api/countries`
     get(countryNameUrl).done(function (response) {
@@ -130,6 +221,11 @@ $(() => {
     });
 
     // ======================= SCHOOLS ===================
+    $("#selectSchool").change(function () {
+        let schoolType = $("#selectSchool option:selected").val(),
+            schoolTypeId = $("#selectSchool option:selected").data('id')
+    });
+
     $("#state").change(function () {
         let schoolTypeId = $("#selectSchool option:selected").data('id'),
             stateId = $("#state option:selected").data('id'),
@@ -177,13 +273,14 @@ $(() => {
             e.preventDefault()
             let school_id = $("#schools option:selected").data('id'),
                 graduation_year = $("#graduation_year").val(),
-                alumniUrl = `https://alumates.herokuapp.com/api/alumni`,
+                user_id =
+                    alumniUrl = `https://alumates.herokuapp.com/api/alumni`,
                 data = {
                     school_id: school_id,
-                    graduation_year: graduation_year
+                    graduation_year: graduation_year,
+                    user_id: user_id
                 }
-            console.log(data)
-            // post(alumniUrl, data)
+            post(alumniUrl, data)
         })
 
 
@@ -238,54 +335,4 @@ $(() => {
             post(loginUrl, loginData)
         })
     });
-
-    $('.school').click(function () {
-        var selectedSchool = $(this).find('option:selected').val(); //Select the school code which is stored as value for option
-        $.ajax({
-            url: 'https://alumates.herokuapp.com/api/schools', //Write a function in the server side which accepts school code as argument
-            type: 'POST',
-            dataType: 'json', //return type from server side function [return it as JSON object]
-            contentType: "application/json",
-            data: JSON.stringify(selectedSchool), //Pass the data to the function on server side
-            success: function (data) { //Array of data returned from server side function
-                $.each(data, function (value) {
-                    $('.course').append('<option>' + value + '</option>');
-                });
-            },
-            error: function (data) {
-                //display any unhandled error
-            }
-        });
-    });
-
-
-
-
 })
-
-
-
-
-
-
-function onSignIn(googleUser) {
-    var profile = googleUser.getBasicProfile();
-    const registerUrl = `https://alumates.herokuapp.com/api/register`;
-    let registrationDetails = {
-        first_name: profile.getGivenName(),
-        last_name: profile.getFamilyName(),
-        email: profile.getEmail()
-    }
-
-    post(registerUrl, registrationDetails).done(function (response) {
-        // data = JSON.parse(response)
-        // create a session to log user into and save their sate
-    })
-}
-
-function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-        // console.log('User signed out.');
-    });
-}
