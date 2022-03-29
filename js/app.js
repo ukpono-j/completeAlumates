@@ -144,8 +144,8 @@ $(() => {
             // console.log('User signed out.');
             // remove cookie
             // redirect user to signin page
-            setCookie("access_token", dataR.access_token, -1)
-            setCookie("user_id", dataR.user.id, -1)
+            setCookie("access_token", "", -1)
+            setCookie("user_id", "", -1)
         });
     })
 
