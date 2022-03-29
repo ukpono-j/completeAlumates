@@ -89,6 +89,8 @@ function onSignIn(googleUser) {
 }
 
 console.log(registrationData)
+console.log(getCookie('access_token'))
+console.log(getCookie('user_email'))
 
 // post(registerUrl, registrationData).done(function (response) {
 //     let dataR = JSON.parse(response)
