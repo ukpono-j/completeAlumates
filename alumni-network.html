@@ -118,21 +118,24 @@
                 <button onclick="signOut();">Sign out</button>
               </div>
 
-              <div id="complete registration" class="">
+              <div id="complete_registration" class="d-none">
+                <h5>Input a password to complete your registration</h5>
+
                 <form action="#" method="post">
                   <div class="">
                     <label for="password"></label>
-                    <input type="password" id="password">
+                    <input type="password" id="password" />
                   </div>
 
                   <div class="">
-                    <button id="submit_btn"></button>
+                    <button id="submit_btn">
+                      <small>Complete registration</small>
+                    </button>
                   </div>
                 </form>
-
-                <small id="">signed in</small>
               </div>
 
+              <div id="signin_response"></div>
             </div>
             <div class="invite-agreed">
               <div class="ci">
@@ -151,7 +154,9 @@
                 Continue Search for your School Alumni
               </a>
             </button>
-            <small id="err_res">You need to be signed in to perform this action</small>
+            <small id="err_res">
+              You need to be signed in to perform this action
+            </small>
           </div>
         </div>
       </div>

@@ -73,25 +73,31 @@ function display() {
     console.log(getCookie('first_name'))
     console.log(getCookie('last_name'))
     console.log(getCookie('email'))
+
+    $("#complete_registration").removeClass('d-none')
 }
 
 $("#submit_btn").click((e) => {
     e.preventDefault()
 
-    const loginUrl = `https://alumates.herokuapp.com/api/login`
-    let loginData = {
-        email: profile.getEmail(),
+    const registerUrl = `https://alumates.herokuapp.com/api/register`
+    let registerData = {
+        first_name: getCookie('first_name'),
+        last_name: getCookie('last_name'),
+        email: getCookie('email'),
         password: $("#password").val()
+        // imageUrl: getCookie('imageUrl')
     }
 
-    // post(registerUrl, registerData).done(function (response) {
-    //     dataR = JSON.parse(response)
-    //     console.log(dataR)
-    //     // create a session to log user into and save their sate
-    // setCookie('access_token', dataR.access_token, 1)
-    // setCookie('user_email', dataR.email, 1)
-    // setCookie('user_id', dataR.id, 1)
-    // })
+    post(registerUrl, registerData).done(function (response) {
+        dataR = JSON.parse(response)
+        console.log(dataR)
+        // create a session to log user into and save their sate
+        setCookie('access_token', dataR.access_token, 1)
+        setCookie('user_email', dataR.email, 1)
+        setCookie('user_id', dataR.id, 1)
+        $("#signin_response").html('<small>signed in</small>')
+    })
 })
 
 $("#login").click((e) => {
@@ -99,7 +105,7 @@ $("#login").click((e) => {
 
     const loginUrl = `https://alumates.herokuapp.com/api/login`
     let loginData = {
-        email: profile.getEmail(),
+        email: getCookie('email'),
         password: $("#password").val()
     }
 
@@ -107,9 +113,9 @@ $("#login").click((e) => {
         dataL = JSON.parse(response)
         console.log(dataL)
         // create a session to log user into and save their sate
-        // setCookie('access_token', dataR.access_token, 1)
-        // setCookie('user_email', dataR.email, 1)
-        // setCookie('user_id', dataR.id, 1)
+        setCookie('access_token', dataR.access_token, 1)
+        setCookie('user_email', dataR.email, 1)
+        setCookie('user_id', dataR.id, 1)
     })
 })
 
