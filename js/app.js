@@ -47,87 +47,65 @@ function getCookie(name) {
 let token = getCookie("access_token"),
     user_email = getCookie("user_email"),
     id = getCookie("user_id"),
-    registrationData = {},
-    loginData = {}
-
-function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-        // remove cookie
-        setCookie("access_token", '', -1)
-        setCookie("user_email", '', -1)
-        // token = getCookie("access_token")
-        // user_email = getCookie("user_email")
-        // console.log('token: ' + token)
-        // console.log('user_email: ' + user_email)
-        // console.log('User signed out.')
-    });
-}
+    registerData = {}
 
 function onSignIn(googleUser) {
-    var profile = googleUser.getBasicProfile(),
-        id_token = googleUser.getAuthResponse().id_token,
-        registerUrl = 'https://alumates.herokuapp.com/api/register',
-        loginUrl = 'https://alumates.herokuapp.com/api/login'
-    registrationData = {
-        first_name: profile.getGivenName(),
-        last_name: profile.getFamilyName(),
-        email: profile.getEmail()
-        // image_url: profile.getImageUrl(),
-    }
-    loginData = {
-        email: profile.getEmail(),
-        password: 'password'
-    }
+    let profile = googleUser.getBasicProfile();
+    const registerUrl = `https://alumates.herokuapp.com/api/register`
 
-    setCookie('access_token', id_token, 1)
-    setCookie('user_email', profile.getEmail(), 1)
-    // token = getCookie("access_token")
-    // user_email = getCookie("user_email")
-    // console.log('token: ' + token)
-    // console.log('user_email: ' + user_email)
+    registerData.first_name = profile.getGivenName()
+    registerData.last_name = profile.getFamilyName()
+    registerData.email = profile.getEmail()
+    // registerData.imageUrl = profile.getImageUrl()
+
+    return registerData
 }
+console.log(registerData)
 
-console.log(registrationData)
-console.log(getCookie('access_token'))
-console.log(getCookie('user_email'))
+$("#submit_btn").click((e) => {
+    e.preventDefault()
 
-// post(registerUrl, registrationData).done(function (response) {
-//     let dataR = JSON.parse(response)
-//     console.log('dataR: ' + dataR)
-//     if (dataR.message == 'The email has already been taken.') {
-//         console.log('log user in instead')
-//     } else {
-//         console.log(dataR)
-//         // create a session to log user into and save their sate
-//     }
-// })
+    const loginUrl = `https://alumates.herokuapp.com/api/login`
+    let loginData = {
+        email: profile.getEmail(),
+        password: $("#password").val()
+    }
 
-// post(loginUrl, loginData).done(function (response) {
-//     let dataL = JSON.parse(response)
-//     console.log('dataR: ' + dataL)
-//     if (dataR.message == 'Invalid login details') {
-//         console.log('user details incorrect')
-//     } else {
-//         console.log(dataL)
-//         // create a session to log user into and save their sate
-//     }
-// })
+    // post(registerUrl, registerData).done(function (response) {
+    //     dataR = JSON.parse(response)
+    //     console.log(dataR)
+    //     // create a session to log user into and save their sate
+    // setCookie('access_token', dataR.access_token, 1)
+    // setCookie('user_email', dataR.email, 1)
+    // setCookie('user_id', dataR.id, 1)
+    // })
+})
 
-// if (!token) {
-//     post(loginUrl, loginData).done(function (response) {
-//         let dataL = JSON.parse(response)
-//         // console.log('dataL: ' + dataL)
-//         if (dataL.message == 'Invalid login details') {
-//             // user not in database
-//             // register user as data is coming from google server
-//         } else {
-//             // create a session to log user into and save their sate
-//             setCookie("access_token", dataR.access_token, 1)
-//             setCookie("user_id", dataR.user.id, 1)
-//         }
-//     })
-// }
+$("#login").click((e) => {
+    e.preventDefault()
+
+    const loginUrl = `https://alumates.herokuapp.com/api/login`
+    let loginData = {
+        email: profile.getEmail(),
+        password: $("#password").val()
+    }
+
+    post(loginUrl, loginData).done(function (response) {
+        dataL = JSON.parse(response)
+        console.log(dataL)
+        // create a session to log user into and save their sate
+        // setCookie('access_token', dataR.access_token, 1)
+        // setCookie('user_email', dataR.email, 1)
+        // setCookie('user_id', dataR.id, 1)
+    })
+})
+
+function signOut() {
+    let auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+        // console.log('User signed out.');
+    });
+}
 
 // get user id using their email
 // add user to alumni
