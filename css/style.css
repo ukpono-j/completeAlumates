@@ -4206,6 +4206,17 @@ p {
     border: none;
 }
 
+#submit_btn {
+    height: 37px;
+    padding: 8px 10px;
+    background-color: #fff;
+    font-size: 13px;
+}
+
+#complete_registration p {
+    font-size: 12px;
+}
+
 .invite-signUp-1>div {
     margin: 10px;
 }
