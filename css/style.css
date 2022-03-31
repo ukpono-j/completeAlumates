@@ -4198,6 +4198,14 @@ p {
     justify-content: center;
 }
 
+.signout-btn {
+    height: 37px;
+    width: 200px;
+    color: gray;
+    font-size: 13px;
+    border: none;
+}
+
 .invite-signUp-1>div {
     margin: 10px;
 }

@@ -51,12 +51,11 @@ let token = getCookie("access_token"),
 
 function onSignIn(googleUser) {
     let profile = googleUser.getBasicProfile();
-    const registerUrl = `https://alumates.herokuapp.com/api/register`
 
     registerData.first_name = profile.getGivenName()
     registerData.last_name = profile.getFamilyName()
     registerData.email = profile.getEmail()
-    // registerData.imageUrl = profile.getImageUrl()
+        // registerData.imageUrl = profile.getImageUrl()
 
     setCookie('first_name', profile.getGivenName(), 1)
     setCookie('last_name', profile.getFamilyName(), 1)
@@ -86,16 +85,17 @@ $("#submit_btn").click((e) => {
         last_name: getCookie('last_name'),
         email: getCookie('email'),
         password: $("#password").val()
-        // imageUrl: getCookie('imageUrl')
+            // imageUrl: getCookie('imageUrl')
     }
 
-    post(registerUrl, registerData).done(function (response) {
+    post(registerUrl, registerData).done(function(response) {
         dataR = JSON.parse(response)
         console.log(dataR)
-        // create a session to log user into and save their sate
+            // create a session to log user into and save their sate
         setCookie('access_token', dataR.access_token, 1)
         setCookie('user_email', dataR.email, 1)
         setCookie('user_id', dataR.id, 1)
+        $("#complete_registration").addClass('d-none')
         $("#signin_response").html('<small>signed in</small>')
     })
 })
@@ -109,10 +109,10 @@ $("#login").click((e) => {
         password: $("#password").val()
     }
 
-    post(loginUrl, loginData).done(function (response) {
+    post(loginUrl, loginData).done(function(response) {
         dataL = JSON.parse(response)
         console.log(dataL)
-        // create a session to log user into and save their sate
+            // create a session to log user into and save their sate
         setCookie('access_token', dataR.access_token, 1)
         setCookie('user_email', dataR.email, 1)
         setCookie('user_id', dataR.id, 1)
@@ -121,7 +121,7 @@ $("#login").click((e) => {
 
 function signOut() {
     let auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
+    auth2.signOut().then(function() {
         // console.log('User signed out.');
     });
 }
@@ -131,13 +131,15 @@ function signOut() {
 
 $(() => {
     // ============== SEARCH SCHOOLMATES ==============
-    $("#search_schoolmates_btn").click(function (e) {
+    $("#search_schoolmates_btn").click(function(e) {
         e.preventDefault()
-        let mate = $("#search_schoolmates").val(), searchUrl = `https://alumates.herokuapp.com/api/user/search/${mate}`
-        getRequest(searchUrl).done(function (response) {
+        let mate = $("#search_schoolmates").val(),
+            searchUrl = `https://alumates.herokuapp.com/api/user/search/${mate}`
+        getRequest(searchUrl).done(function(response) {
             console.log(response)
-            let data = JSON.parse(response), schoolmates = ''
-            $.map(data, function (index) {
+            let data = JSON.parse(response),
+                schoolmates = ''
+            $.map(data, function(index) {
                 schoolmates_html = `<div class="deep-search-content-bx1">
                     <div class="deep-search-main-content">
                         <div class="deep-search-main-content-img">
@@ -195,9 +197,8 @@ $(() => {
             // cannot continue to join alumni
             // redirect user to sign in page
             let err = "You need to be signed in to perform this action"
-            // window.location.href = ""
-        }
-        else {
+                // window.location.href = ""
+        } else {
             // user is logged in, get email
             console.log(getCookie(access_token));
             console.log(getCookie(id));
@@ -205,7 +206,7 @@ $(() => {
     })
 
     // ============== SEARCH INVITE ==============
-    $("#invite_code_btn").click(function (e) {
+    $("#invite_code_btn").click(function(e) {
         e.preventDefault()
         let invite = $("#invite_code").val(),
             inviteUrl = `https://alumates.herokuapp.com/api/user/invite/${invite}`
@@ -222,64 +223,65 @@ $(() => {
 
     // ============== SCHOOL TYPE ==============
     const schoolTypeUrl = 'https://alumates.herokuapp.com/api/school_types'
-    get(schoolTypeUrl).done(function (response) {
+    get(schoolTypeUrl).done(function(response) {
         schoolType = JSON.parse(response)
         $("#selectSchool").html('')
-        $.map(schoolType, function (index) {
+        $.map(schoolType, function(index) {
             $("#selectSchool").append(`<option data-id='${index.id}' value="${index.name}">${index.name}</option>`)
         })
     })
 
     // ============== COUNTRY ==============
     const countryNameUrl = `https://alumates.herokuapp.com/api/countries`
-    get(countryNameUrl).done(function (response) {
+    get(countryNameUrl).done(function(response) {
         data = JSON.parse(response)
         $("#country").html('')
-        $.map(data, function (index) {
+        $.map(data, function(index) {
             $("#country").append(`<option data-id="${index.id}"  value="${index.name}">${index.name}</option>`)
         })
     })
 
     // ============== STATE ==============
-    $("#country").change(function () {
+    $("#country").change(function() {
         let countryId = $("#country option:selected").data('id'),
             stateNameUrl = `https://alumates.herokuapp.com/api/${countryId}/states`;
-        get(stateNameUrl).done(function (response) {
+        get(stateNameUrl).done(function(response) {
             $("#state").html('')
             states = JSON.parse(response)
-            $.map(states, function (index) {
+            $.map(states, function(index) {
                 $("#state").append(`<option data-id="${index.id}"  value="${index.name}">${index.name}</option>`)
             })
         })
     });
 
     // ======================= SCHOOLS ===================
-    $("#selectSchool").change(function () {
+    $("#selectSchool").change(function() {
         let schoolType = $("#selectSchool option:selected").val(),
             schoolTypeId = $("#selectSchool option:selected").data('id')
     });
 
-    $("#state").change(function () {
+    $("#state").change(function() {
         let schoolTypeId = $("#selectSchool option:selected").data('id'),
             stateId = $("#state option:selected").data('id'),
             schoolsUrl = `https://alumates.herokuapp.com/api/${stateId}/cities/schools/${schoolTypeId}`;
 
-        get(schoolsUrl).done(function (response) {
+        get(schoolsUrl).done(function(response) {
             $("#schools").html('')
             data = JSON.parse(response)
             if (data.message == 'School not found') {
                 $("#schools").html('<button id="sch_not_found_btn">Please Add your School</button>')
             } else {
-                $.map(data, function (index) {
+                $.map(data, function(index) {
                     $("#schools").append(`<option data-id="${index.id}"  value="${index.name}">${index.name}</option>`)
                 })
             }
         })
 
         // ============== NO CITY ==============
-        $("#add_alumni_btn").click(function (e) {
+        $("#add_alumni_btn").click(function(e) {
             e.preventDefault()
-            let name = $("#city").val(), state_id = $("#state").val(),
+            let name = $("#city").val(),
+                state_id = $("#state").val(),
                 cityUrl = `https://alumates.herokuapp.com/api/city/${name}`,
                 data = {
                     name: name,
@@ -289,25 +291,25 @@ $(() => {
         })
 
         // ======================= CITY ===================
-        $("#state").change(function () {
+        $("#state").change(function() {
             stateId = $("#state option:selected").data('id'),
                 cityUrl = `https://alumates.herokuapp.com/api/${stateId}/cities`;
-            get(cityUrl).done(function (response) {
+            get(cityUrl).done(function(response) {
                 $("#city").html('')
                 cities = JSON.parse(response)
-                $.map(cities, function (index) {
+                $.map(cities, function(index) {
                     $("#city").append(`<option data-id="${index.id}"  value="${index.name}">${index.name}</option>`)
                 })
             })
         });
 
         // ============== ALUMNI ==============
-        $("#join_alumni").click(function (e) {
+        $("#join_alumni").click(function(e) {
             e.preventDefault()
             let school_id = $("#schools option:selected").data('id'),
                 graduation_year = $("#graduation_year").val(),
                 user_id =
-                    alumniUrl = `https://alumates.herokuapp.com/api/alumni`,
+                alumniUrl = `https://alumates.herokuapp.com/api/alumni`,
                 data = {
                     school_id: school_id,
                     graduation_year: graduation_year,
@@ -320,9 +322,10 @@ $(() => {
         // ======================= ADD SCHOOL ===================
 
         // ============== NO SCHOOL ==============
-        $("#add_alumni_btn").click(function (e) {
+        $("#add_alumni_btn").click(function(e) {
             e.preventDefault()
-            let school_id = $("#school").val(), city_id = $("#city").val(),
+            let school_id = $("#school").val(),
+                city_id = $("#city").val(),
                 schoolUrl = `https://alumates.herokuapp.com/api/user/search/${mate}`,
                 data = {
                     school_id: school_id
@@ -333,7 +336,7 @@ $(() => {
 
         $('.portal_employer').hide();
 
-        $('.employee__button').click(function (e) {
+        $('.employee__button').click(function(e) {
             e.preventDefault();
             $(this).addClass('active');
             $('.employer__button').removeClass('active');
@@ -342,7 +345,7 @@ $(() => {
             $('#edit-email').focus(); //Should appear after $('.portal_employee').show(); because if it's before that, the register form doesn't exist in the DOM
         });
 
-        $('.employer__button').click(function (e) {
+        $('.employer__button').click(function(e) {
             e.preventDefault();
             $(this).addClass('active');
             $('.employee__button').removeClass('active');
