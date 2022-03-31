@@ -1,117 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
 
     <!-- ============================ MAIN STYLING ===================== -->
-    <link rel="stylesheet" href="./css/style.css">
-    <!-- <link rel="stylesheet" href="css/tailwind.css"> -->
-    <!-- jQuery first then Bootstrap JS -->
-    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script> -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <link rel="stylesheet" href="./css/style.css" />
+
     <title>Alumates2</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="page-wrapper">
-        <header class="header header1">
-            <nav class="navbar">
-                <div class="hamburger">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </div>
-                <h1 style="color: white;" class="fd"> </h1>
-                <ul class="nav-menu sign_menu">
-                    <div class="signup_search">
-                        <div class="search_d">
-                            <a href=""> <img src="./images/icons/search.png" alt=""></a>
-                        </div>
-                        <input type="text" name="" id="" placeholder="Search....">
-
-                    </div>
-                    <div class="min-nav-link-container">
-                        <li><a href="./index.html">Home</a></li>
-                        <li><a href="./job-portal.html">Jobs</a></li>
-                        <li><a href="./freelance.html">Freelance</a></li>
-                        <li><a href="">Busines</a></li>
-                        <li><a href="./deep-search.html">School Album</a></li>
-                        <li><a href="">Investment</a></li>
-                    </div>
-                </ul>
-
-                <div class="profile_bx">
-                    <a href="./profile.html">
-                        <img src="./images/icons/profile1.jpg" alt="" class="profile_picx">
-                    </a>
-                </div>
-            </nav>
-
-        </header>
-
-
-        <!-- ============================= GET INTO NETWORK ======================= -->
-        <div class="get-into-network">
-            <div class="get-into-network-container">
-                <h1>Lets have the details of your school</h1>
-                <div>
-                    <select id="selectSchool">
-                        <option value="">Select your school type</option>
-                    </select>
-                </div>
-                <div>
-                    <h5>Which country did you school in?</h5>
-                    <!-- <input list="countries" name="country" id="" autocomplete="off">
-                    <datalist id="countries"> </datalist> -->
-                    <select id="country">
-                        <option value="">Select your country</option>
-                    </select>
-                </div>
-                <div>
-                    <h5>Which state is the school situated?</h5>
-                    <!-- <input list="states" id="state">
-                    <datalist id="states"> </datalist> -->
-                    <select id="state">
-                        <option value="">Select your state</option>
-                    </select>
-                </div>
-                <div>
-                    <h5>What is the name of your school?</h5>
-                    <select name="" id="schoolName">
-                        <option value=""></option>
-                    </select>
-                </div>
-                <div>
-                    <h5>What year did you graduate?</h5>
-                    <input type="text" name="" id="">
-                </div>
-
-                <div class="get-in-next">
-                    <a href="./not-registered.html" id="Save" value="Save Data">Next</a>
-                </div>
+      <header class="header header1">
+        <nav class="navbar">
+          <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+          <h1 style="color: white;" class="fd"></h1>
+          <ul class="nav-menu sign_menu">
+            <div class="signup_search">
+              <div class="search_d">
+                <a href=""><img src="./images/icons/search.png" alt="" /></a>
+              </div>
+              <input type="text" name="" id="" placeholder="Search...." />
             </div>
+            <div class="min-nav-link-container">
+              <li><a href="./index.html">Home</a></li>
+              <li><a href="./job-portal.html">Jobs</a></li>
+              <li><a href="./freelance.html">Freelance</a></li>
+              <li><a href="">Busines</a></li>
+              <li><a href="./deep-search.html">School Album</a></li>
+              <li><a href="">Investment</a></li>
+            </div>
+          </ul>
+
+          <div class="profile_bx">
+            <a href="./profile.html">
+              <img
+                src="./images/icons/profile1.jpg"
+                alt=""
+                class="profile_picx"
+              />
+            </a>
+          </div>
+        </nav>
+      </header>
+
+      <!-- ============================= GET INTO NETWORK ======================= -->
+      <div class="get-into-network">
+        <div class="get-into-network-container">
+          <h1>Lets have the details of your school</h1>
+          <div>
+            <h5>Select your school type</h5>
+            <select id="selectSchool">
+              <option>Select your school type</option>
+            </select>
+          </div>
+          <div>
+            <h5>Which country did you school in?</h5>
+            <select id="country">
+              <option>Select your country</option>
+            </select>
+          </div>
+          <div>
+            <h5>Which state is the school situated?</h5>
+            <!-- <input list="states" id="state">
+                    <datalist id="states"> </datalist> -->
+            <select id="state">
+              <option>Select your state</option>
+            </select>
+          </div>
+          <div>
+            <h5>What is the name of your school?</h5>
+            <select id="schools">
+              <option>select your school</option>
+            </select>
+          </div>
+          <div style="color: white;" class="grad-year">
+            <h5>What year did you graduate?</h5>
+            <input
+              type="text"
+              placeholder="Select graduation year"
+              id="graduation_year"
+            />
+            <!-- <select id="graduation">
+                        <option>Select graduation year</option>
+                    </select> -->
+          </div>
+          <div></div>
+          <div class="get-in-next">
+            <!-- href="./not-registered.html"  -->
+            <button id="join_alumni">Join Alumni</button>
+          </div>
         </div>
+      </div>
     </div>
 
-
-
-    <script src="./js/app.js"></script>
-</body>
-
-
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/js/app.js"></script>
+    <script src="/services/index.js"></script>
+  </body>
 </html>
