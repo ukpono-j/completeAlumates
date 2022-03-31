@@ -3994,6 +3994,7 @@ p {
 /* ==============================  alumni-network  ============ */
 
 .alumni-network11 {
+    min-height: 100vh;
     padding: 23px;
     display: flex;
     align-items: center;
@@ -4029,6 +4030,9 @@ p {
 
 .search-alumni {
     display: flex;
+    background-color: transparent;
+    border: none;
+    width: 100%;
     justify-content: center;
 }
 
@@ -4215,6 +4219,10 @@ p {
 
 #complete_registration p {
     font-size: 15px;
+}
+
+.complete_registration input {
+    width: 100%;
 }
 
 .invite-signUp-1>div {
