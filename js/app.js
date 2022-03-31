@@ -96,6 +96,7 @@ $("#submit_btn").click((e) => {
         setCookie('access_token', dataR.access_token, 1)
         setCookie('user_email', dataR.email, 1)
         setCookie('user_id', dataR.id, 1)
+        $("#complete_registration").addClass('d-none')
         $("#signin_response").html('<small>signed in</small>')
     })
 })
