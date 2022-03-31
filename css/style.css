@@ -4221,9 +4221,10 @@ p {
     font-size: 15px;
 }
 
-.complete_registration input {
+
+/* .complete_registration input {
     width: 100%;
-}
+} */
 
 .invite-signUp-1>div {
     margin: 10px;
